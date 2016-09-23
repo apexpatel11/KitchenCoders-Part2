@@ -1,4 +1,3 @@
 # KitchenCoders-Part2
 KitchenCoders Part2
-UT Austin Coding Bootcamp
-Apexa Patel
+A recipe application for you and what’s in your fridge
