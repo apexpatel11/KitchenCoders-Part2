@@ -1,6 +1,6 @@
-// PROJECT 2
+// FINAL PROJECT
 // UT BOOT CAMP
-// THE KITCHEN CODERS
+// THE KITCHEN CODERS PART TWO
 // Here is where you create all the functions that will do the routing for your api requests, and the logic of each route, including CRUD commands for the MySQL database (using Sequelize).
 //
 var path = require('path');
@@ -8,9 +8,8 @@ var express = require('express');
 var router = express.Router();
 var Recipe = require('../models')["Recipe"];
 var Ingredient = require('../models')["Ingredient"];
-var getRecipes = require('../getRecipes');
-
-
+var getRecipes = require('../utils/getRecipes');
+var helpers = require('../utils/helpers');
 
 //******************************************************
 //  ROUTE FOR ROOT AND HOME
@@ -23,17 +22,6 @@ var getRecipes = require('../getRecipes');
 //	  (3) go to the addRecipes page
 //    (4) go to the preferences page
 //
-// POST REQUEST TO URI  - /INGREDIENTS
-// provide ingredients information to display
-// see ingredient.handlebars
-// router.get('/ingredient', function (req, res) {
-// 	Ingredient.findAll()
-// 	.then (function(ingredients){
-// 		var hbsObject = {ingredients};
-// 		res.render('ingredient', hbsObject);
-// 	});
-// });
-// POST REQUEST TO URI  - /INGREDIENTS/ADD
 router.get('/', function (req, res) {
 	res.redirect('/home');
 	});
@@ -55,44 +43,33 @@ router.get('/home', function (req, res) {
 // GET REQUEST TO URI  - /INGREDIENT
 // find all ingredients
 // and pass to handlebars to process further
-router.get('/ingredient', function (req, res) {
-	console.log("GET REQUEST RECEIVED BY SERVER");
-	Ingredient.findAll()
+router.get('/ingredient', function(req, res) {
+	helpers.findAllIngredients(req, res)
 	.then (function(ingredient){
-		console.log("INGREDIENT", ingredient);
 		var hbsObject = {ingredient};
 		res.render('ingredient', hbsObject);
 	});
 });
 
-// POST REQUEST TO URI  - /INGREDIENT/ADD
+// POST REQUEST TO URI  - /INGREDIENT/UPDATE
 // receives new ingredient entered by user
 // and updates database with the new ingredient
-router.post('/ingredient/update', function (req, res) {
-	console.log("ingredient received", req.body);
-	Ingredient.create(
-		{name: req.body.name,
-		category: req.body.category})
-		.then (function(){
-			res.redirect('/ingredient');
-		});
-});
-router.get('/ingredient', function (req, res) {
-
-	Ingredient.findAll()
-	.then (function(ingredient){
-		console.log("INGREDIENT", ingredient);
-		var hbsObject = {ingredient};
-		res.render('ingredient', hbsObject);
+// router.post('/ingredient/update', function(req, res) {
+// 	helpers.createIngredient(req, res)
+// 	});
+router.post('/ingredient/update', function(req, res) {
+	helpers.createIngredient(req, res)
+	.then (function(){
+		res.redirect('/ingredient');
 	});
 });
+
+// PUT REQUEST TO URI  - /INGREDIENT/UPDATE/:id
 // user identifies an ingredient and a change to the inStock status
 // we update the database with that information
-
-router.put('/ingredient/update/:id', function (req, res) {
-	var condition = 'id = ' + req.params.id;
-	Ingredient.update({inPantry: req.body.inPantry }, {where: {id: req.params.id}})
-	.then (function () {
+router.put('/ingredient/update/:id', function(req, res) {
+	helpers.updateIngredientPantryStatus(req, res)
+	.then (function(){
 		res.redirect('/ingredient');
 	});
 });
@@ -103,28 +80,10 @@ router.put('/ingredient/update/:id', function (req, res) {
 // ??    POST REQUEST to delete
 // we update the database with that information
 
-
-
-
 //******************************************************
 //  ROUTES FOR RECIPES
 //******************************************************
 //
-// GET REQUEST TO URI - /RECIPE  (*** should change to /RECIPE/RESULTS ??)
-// user has entered filtering information, which is used below
-// to query database for matching recipes
-// add addition limitation that all ingredients must be inStock
-//
-router.post('/findRecipe/find', function (req, res) {
-	console.log(req.body);
-	Recipe.findAll({
-	where: {vegan : req.body.vegan}})
-	.then (function(recipe){
-		var hbsObject = {recipe};
-		res.render('findRecipe', hbsObject);
-	});
-
-});
 
 // GET REQUEST TO URI - /findRecipe
 // user presented with page where she can
@@ -136,20 +95,25 @@ router.get('/findRecipe', function (req, res) {
 });
 
 router.post('/findRecipe', function (req, res) {
-	var condition = 'id=' + req.params.id;
-
-	Recipe.findAll({
-		where:{
-		vegan: req.body.vegetarian,
-		glutenFree: req.body.gluten
-	  }
-	})
-	.then (function(recipe){
-		var hbsObject = {recipe};
-		res.render('findRecipe', hbsObject);
-	})
+	// ***************** LKMNOTE TO DO ********************
+	// figure out how to get helper function to 
+	// return results array so we can render it
+	// in this router file
+	helpers.findDatabaseRecipes(req, res);
 });
 
+// GET REQUEST TO URI - /recipe
+// user presented with page showing specific recipe information
+//
+router.get('/recipe/:id', function (req, res) {
+	helpers.findSpecificRecipe(req,res)
+	.then (function(recipe){
+		console.log("result of findSpecificRecipe: ", recipe);
+		var hbsObject = {recipe};
+		res.render('recipe', hbsObject);	
+	})
+});
+//
 // GET REQUEST TO URI - /addRecipe
 // user presented with page where she can
 // query database for matching recipes
@@ -159,26 +123,6 @@ router.get('/addRecipe', function (req, res) {
 	res.render('addRecipe');
 });
 //
-// POST REQUEST TO URI  - /RECIPE/ADD
-// receives new recipe entered by user
-// and updates database with the new recipe
-//  THIS IS WHERE WE WILL NEED TO MAKE THE ASSOCIATION IN THE DATABASE BETWEEN THE RECIPE AND THE INGREDIENTS IT USES
-//
-
-// here is the code that has worked to make that association
-// .then(function(){
-// 	return models.Recipe.create(
-// 		{title: 'Turkey Sandwich',
-// 		 instructions: 'Take out two pieces of Bread. Spread mayo on one slice and mustard on the other. Add a layer of turkey, cheese, tomatoes, and lettuce.',
-// 		 cuisine: 'Miscellaneous'
-// 		})
-// 	.then(function(recipe){
-//     return models.Ingredient.findAll({where: {name: ['Lettuce','Turkey','Tomatoes']}})
-//     	.then(function(ingredients){recipe.addIngredients(ingredients);
-//     	})
-// 	})
-
-// })
 
 //******************************************************
 //  ROUTE FOR ADMINISTRATOR
@@ -191,15 +135,16 @@ router.get('/addRecipe', function (req, res) {
 //
 //
 router.get('/admin', function (req, res) {
-		res.render('admin');
+		var message = "What kind of recipes are you looking for?";
+		var hbsobject = {message};
+		res.render('admin', hbsobject);
 	});
 
-router.post('/admin/add', function (req, res) {
-	getRecipes(
-		{searchTerm: req.body.searchTerm,
-			category: req.body.vegan});
-	res.redirect('/home');
-
+router.post('/admin', function (req, res) {
+	getRecipes(req.body, function(message){
+		var hbsobject = {message};
+		res.render('admin', hbsobject);
+	});
 });
 
 //******************************************************
@@ -212,9 +157,7 @@ router.post('/admin/add', function (req, res) {
 // add addition limitation that all ingredients must be inStock
 //
 router.get('/contactUs', function (req, res) {
-
 	res.render('contactUs');
-
 });
 
 
@@ -248,3 +191,23 @@ router.get('/contactUs', function (req, res) {
 //});
 
 module.exports = router;
+// POST REQUEST TO URI  - /RECIPE/ADD
+// receives new recipe entered by user
+// and updates database with the new recipe
+//  THIS IS WHERE WE WILL NEED TO MAKE THE ASSOCIATION IN THE DATABASE BETWEEN THE RECIPE AND THE INGREDIENTS IT USES
+//
+
+// here is the code that has worked to make that association
+// .then(function(){
+// 	return models.Recipe.create(
+// 		{title: 'Turkey Sandwich',
+// 		 instructions: 'Take out two pieces of Bread. Spread mayo on one slice and mustard on the other. Add a layer of turkey, cheese, tomatoes, and lettuce.',
+// 		 cuisine: 'Miscellaneous'
+// 		})
+// 	.then(function(recipe){
+//     return models.Ingredient.findAll({where: {name: ['Lettuce','Turkey','Tomatoes']}})
+//     	.then(function(ingredients){recipe.addIngredients(ingredients);
+//     	})
+// 	})
+
+// })

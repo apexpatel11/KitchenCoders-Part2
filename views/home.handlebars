@@ -1,10 +1,110 @@
-{{!-- header-img start ============================== --}}
-    <section id="hero-area">
-      <img class="img-responsive" src="images/header.jpg" alt="">
-    </section>
+<style>
 
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+ background: url('images/header.jpg') no-repeat;
+  background-size: cover;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+
+#polina { 
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100; 
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+  width: 70%;
+  margin:6em auto;
+  text-align: : center;
+  font-size: 1.2rem;
+}
+h1 {
+  padding-left: 170px;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+}
+#polina button { 
+  display: block;
+  width: 80%;
+  padding: .4rem;
+  border: none; 
+  margin: 1rem auto; 
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-radius: 3px; 
+  cursor: pointer;
+  -webkit-transition: .3s background;
+  transition: .3s background;
+}
+#polina button:hover { 
+   background: rgba(0,0,0,0.5);
+}
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background:rgba(0,0,0,0.5);
+  padding: .5rem;
+  -webkit-transition: .6s background;
+  transition: .6s background; 
+}
+a:hover{
+  background:rgba(0,0,0,0.9);
+}
+@media screen and (max-width: 500px) { 
+  div{width:70%;} 
+}
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+a.button hvr-sweep-to-bottom {
+    font-size: 1em;
+    display: block;
+    padding: 0.5em;
+    background: #012231;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 1em;
+}
+.menu-grid h4 {
+    font-size: 2em;
+    color: #F19E1F;
+    text-transform: capitalize;
+    padding: 0.5em 0;
+}
+
+
+</style>
+
+{{!-- header-img start ============================== --}}
+<div>
+<video poster="https://grupovina.files.wordpress.com/2014/06/341445.jpg" id="bgvid" playsinline autoplay muted loop>
+<source src="videos/tr.mp4" type="video/mp4">
+</video>
+<div id="polina">
+<h1>welcome to Kitchen Recipes!!</h1>
+<p></p>
+</div>
 
 {{!-- Slider start ============================== --}}
+
     <section id="slider">
         <div class="container">
             <div class="row">
@@ -45,6 +145,7 @@
             </div>{{!-- .row close --}}
         </div>{{!-- .container close --}}
     </section>{{!-- slider close --}}
+    
 
 {{!-- Options Starts Here : ============================== --}}
     <section id="about-us">
@@ -53,12 +154,92 @@
                 <div class="col-md-12">
                     <div class="block">
                         <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms" src="images/cooker-img.png" alt="cooker-img">
-                        <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >What <span> would you like to do ? </span> </br> 
-                        <button><a href="/recipe">Go to recipes</a></button>
-                        </h1>
-                        <h1> <button> <a href="/ingredient">Go to Ingredients</a></button> </h1>
+                        <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >What <span> would you like to do ? </span> </br></h1>
+
+                        <div class="special-grids">
+                        <div class="col-md-4 menu-grid">
+                        <div class="menu1">
+                            <img src="images/m2.jpg" class="img-responsive gray" alt="ingredients">
+                            <div class="menu-icon hvr-sweep-to-top">
+                            </div>
+                        </div>
+                        <div class="menu-bottom">
+                            <h4>Update your Pantry</h4>
+                            <p>Update your ingredients that you have in pantry or fridge</p>
+                            <a href="/ingredient" class="button  hvr-sweep-to-bottom">Go to Ingredients!!</a>
+                        </div>
                     </div>
-                </div>{{!-- .col-md-12 close --}}
-            </div>{{!-- .row close --}}
-        </div>{{!-- .containe close --}}
-    </section>{{!-- #call-to-action close --}}
+
+                    <div class="col-md-4 menu-grid">
+                        <div class="menu1">
+                            <img src="images/m4.jpg" class="img-responsive gray" alt="Recipes">
+                            <div class="menu-icon hvr-sweep-to-top">
+                            </div>
+                        </div>
+                        <div class="menu-bottom">
+                            <h4>Find Recipies</h4>
+                            <p>Find awesome recipes based on ingredients that you have in pantry</p>
+                            <a href="/findRecipe" class="button  hvr-sweep-to-bottom">Go to Find Recipes!!</a>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-4 menu-grid">
+                        <div class="menu1">
+                            <img src="images/m5.jpg" class="img-responsive gray" alt="Add recipes">
+                            <div class="menu-icon hvr-sweep-to-top">
+                            </div>
+                        </div>
+                        <div class="menu-bottom">
+                            <h4>Add Recipes</h4>
+                            <p>Add new recipes that you liked and save it for next time</p>
+                            <a href="/addRecipe" class="button  hvr-sweep-to-bottom">Go to add Recipes!!</a>
+                        </div>
+                    </div>
+                    
+
+
+
+
+                    </div>
+                </div>{{!.col-md-12 close }}
+            </div>{{!.row close }}
+        </div>{{!.containe close }}
+    </section>{{! #call-to-action close }}
+
+    
+
+<script type="text/javascript">
+ var vid = document.getElementById("bgvid");
+var pauseButton = document.querySelector("#polina button");
+
+function vidFade() {
+  vid.classList.add("stopfade");
+}
+
+vid.addEventListener('ended', function()
+{
+// only functional if "loop" is removed 
+vid.pause();
+// to capture IE10
+vidFade();
+}); 
+
+
+pauseButton.addEventListener("click", function() {
+  vid.classList.toggle("stopfade");
+  if (vid.paused) {
+    vid.play();
+    pauseButton.innerHTML = "Pause";
+  } else {
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+  }
+})  
+
+</script>
+
+
+
+    
+    
+
