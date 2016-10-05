@@ -44,12 +44,10 @@ router.get('/home', function (req, res) {
 // find all ingredients
 // and pass to handlebars to process further
 router.get('/ingredient', function(req, res) {
-	helpers.findAllIngredients(req, res)
-	.then (function(ingredient){
-		var hbsObject = {ingredient};
-		res.render('ingredient', hbsObject);
-	});
+	helpers.findAllIngredients(req, res);
+	// res.render('ingredient', hbsObject); // this is done in helper routine
 });
+
 
 // POST REQUEST TO URI  - /INGREDIENT/UPDATE
 // receives new ingredient entered by user
@@ -67,10 +65,11 @@ router.post('/ingredient/update', function(req, res) {
 // PUT REQUEST TO URI  - /INGREDIENT/UPDATE/:id
 // user identifies an ingredient and a change to the inStock status
 // we update the database with that information
-router.put('/ingredient/update/:id', function(req, res) {
+router.post('/ingredient/update/:id', function(req, res) {
 	helpers.updateIngredientPantryStatus(req, res)
 	.then (function(){
-		res.redirect('/ingredient');
+		console.log("you are here", req.body.inPantry);
+		res.json(req.body.inPantry);
 	});
 });
 
@@ -96,22 +95,21 @@ router.get('/findRecipe', function (req, res) {
 
 router.post('/findRecipe', function (req, res) {
 	// ***************** LKMNOTE TO DO ********************
-	// figure out how to get helper function to 
+	// figure out how to get helper function to
 	// return results array so we can render it
 	// in this router file
 	helpers.findDatabaseRecipes(req, res);
+	// res.render('findRecipe', hbsObject); // this is done in helpers routine
+
 });
 
 // GET REQUEST TO URI - /recipe
 // user presented with page showing specific recipe information
 //
-router.get('/recipe/:id', function (req, res) {
-	helpers.findSpecificRecipe(req,res)
-	.then (function(recipe){
-		console.log("result of findSpecificRecipe: ", recipe);
-		var hbsObject = {recipe};
-		res.render('recipe', hbsObject);	
-	})
+router.get('/oneRecipe/:id', function(req, res){
+	helpers.findSpecificRecipe(req.params.id, res);
+	// res.render('oneRecipe', hbsObject); // this is done in helpers routine
+
 });
 //
 // GET REQUEST TO URI - /addRecipe

@@ -140,51 +140,47 @@ a:active {
     nav Start
 --*/
 #main-nav {
+  font-family: serif;
   margin-bottom: 0;
   font-weight: bolder;
-  background-color: green;
 }
 #main-nav.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
 }
 .navbar-default {
-    font-size: 27px;
+    font-size: 25px;
     background-color: rgba(0, 128, 0, 1);
-    /*border-width: 1px;
-    border-radius: 4px;*/
+    border-width: 1px;
+    border-radius: 4px;
 }
 #main-nav.navbar-default .navbar-nav>li>a {
     color: rgba(255, 255, 255, 1);
-}    
+    background-color: rgba(0, 128, 0, 1);
+}
 #main-nav.navbar-default .navbar-nav>li>a:hover,
 #main-nav.navbar-default .navbar-nav>li>a:focus {
     color: rgba(0, 128, 0, 1);
     background-color: rgba(248, 248, 248, 1);
-    
 }
 #main-nav.navbar-default .navbar-nav>.active>a,
 #main-nav.navbar-default .navbar-nav>.active>a:hover,
 #main-nav.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(0, 128, 0, 1);
     background-color: rgba(255, 255, 255, 1);
-   
 }
 #main-nav.navbar-default .navbar-toggle {
     border-color: #ffffff;
-    
 }
 #main-nav.navbar-default .navbar-toggle:hover,
 #main-nav.navbar-default .navbar-toggle:focus {
     background-color: #ffffff;
-    
 }
 #main-nav.navbar-default .navbar-toggle .icon-bar {
     background-color: #ffffff;
-    
 }
 #main-nav.navbar-default .navbar-toggle:hover .icon-bar,
 #main-nav.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: green;
+    background-color: #008000;
 }
 /*--
     slider Start
@@ -654,17 +650,17 @@ a:active {
     footer-bottom Start
 --*/
 #footer-bottom {
-  background: green;
+  background: #E9E9E9;
   padding: 20px 0px;
 }
 #footer-bottom p {
   text-align: center;
   padding-top: 12px;
-  color: white;
+  color: #454545;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
 }
 #footer-bottom p a {
-  color: white;
+  color: #FF4F02;
 }

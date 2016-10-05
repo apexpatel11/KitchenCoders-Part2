@@ -1,0 +1,79 @@
+<style>
+h2 {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 30px;
+  color: green;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+button {
+margin: 10px;
+margin-top: 15px;
+}
+
+.recipePic {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 300px;
+}
+
+.instructions {
+  font-size: 25px;
+}
+.ingrInfo {
+  width: 100px;
+  font-size: 25px;
+}
+
+</style>
+
+  {{! ************* MAIN HEADING}}
+  <div class="container">
+    <div class="row"
+      <div class="col-md-12">
+        <div class="block">
+          <h1 class="heading"><span> {{recipe.title}} </span></h1>
+
+          <img class="recipePic" src={{recipe.image}}>
+
+          <h3>Preparation Minutes:&nbsp{{recipe.preparationMinutes}}</h3>
+          <h3>Cooking Minutes:&nbsp{{recipe.cookingMinutes}}</h3>
+          <h3>Ingredients</h3>
+          <ul>
+          {{#each ingredients}}
+            <li>
+              <span class="ingrInfo"> {{this.name}}</span>
+              <span class="ingrInfo"> -- {{this.Recipeingredients.amount}}</span>
+              <span class="ingrInfo"> {{this.Recipeingredients.unit}}</span>
+              {{#if this.inPantry}}
+                <span class="ingrInfo">-- In Stock</span>
+              {{else}}
+                <span class="ingrInfo">-- NOT In Stock</span>
+              {{/if}}
+            </li>
+          {{/each}}
+          </ul>
+          <h3>Instructions</h3>
+          <p class="instructions">{{recipe.instructions}}</p>
+          {{#if vegetarian}}
+            <h2>Vegetarian</h2>
+          {{/if}}
+          {{#if vegan}}
+            <h2>Vegan</h2>
+          {{/if}}
+          {{#if glutenFree}}
+            <h2>Gluten Free</h2>
+          {{/if}}
+          <h3>Number of Servings:&nbsp{{servings}}</h3>
+          <a href="{{recipe.sourceUrl}}">Source:&nbsp{{recipe.sourceUrl}}</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+

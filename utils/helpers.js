@@ -1,6 +1,8 @@
 
 var Recipe = require('../models')["Recipe"];
 var Ingredient = require('../models')["Ingredient"];
+var Category = require('../models')["Category"];
+
 
 var helpers = {
 
@@ -10,19 +12,36 @@ var helpers = {
 
 	findAllIngredients: function(req, res) {
 		// return instance of Ingredient.findAll results
-		return Ingredient.findAll()
-		.catch(function(err) {
-			console.log('Error occurred in helpers.findAllIngredients function:', err);		
+		Ingredient.findAll({
+			order: ['name']
 		})
-	},	
+		.then (function(ingredients){
+			Category.findAll({
+				order: ['className']
+			})
+			.then (function(categories){
+				var hbsObject = {
+					categories: categories,
+					ingredients: ingredients};
+				res.render('ingredient', hbsObject);
+			})
+			.catch(function(err) {
+				console.log('Error occurred in helpers.findAllIngredients function:', err);
+			})
+		})
+	},
 
 	createIngredient: function(req, res) {
 		// return instance of Ingredient.create results
 		return Ingredient.create(
 			{name: req.body.name,
 			category: req.body.category})
-		.catch(function(err) {
-			console.log('Error occurred in helpers.createIngredient function:', err);
+		.then (function(ingredient){
+			Category.find({where: {name: ingredient.category}})
+			.then (function(cat){cat.addIngredient(ingredient.id)})
+			.catch(function(err) {
+				console.log('Error occurred in helpers.createIngredient function:', err);
+			})
 		})
 	},
 
@@ -30,7 +49,7 @@ var helpers = {
 		// return number of recipes you can now make
 		// ************** TO DO *************************************
 		return Ingredient.update({inPantry: req.body.inPantry }, {where: {id: req.params.id}})
-		.then (function () {
+		.then (function (updatedIngredient) {
 		// see if any recipes' canMake status is affected by change in ingredient's inPantry status
 			Recipe.findAll({
 			include:[{
@@ -39,6 +58,7 @@ var helpers = {
 				}]
 			})
 			.then (function(recipes){
+				var returnValue;
 				recipes.forEach(function(recipe){
 					if (req.body.inPantry=='false') {
 						recipe.update({canMake: false});
@@ -47,14 +67,14 @@ var helpers = {
 							where: {inPantry: false}
 						})
 						.then(function(ingredients){
-							if (ingredients.length==0) {recipe.update({canMake: true})}
+							if (ingredients.length==0) {recipe.update({canMake: true})};
 						})
 					}
 				})
 			})
 		})
 		.catch(function(err) {
-			console.log('Error occurred in helpers.updateIngredient function:', err);
+			console.log('Error occurred in helpers.updateIngredientPantryStatus function:', err);
 		})
 	},
 //=====================================================================
@@ -111,24 +131,26 @@ var helpers = {
 		})
 	},
 
-	findSpecificRecipe: function(req, res) {
+	findSpecificRecipe: function(idNum, res) {
+		var savedRecipe = {};
 		// return instance of Ingredient.findAll results
 		return Recipe.find({
-			where: {id: req.params.id}
+			where: {id: idNum}
 		})
-		.catch(function(err) {
-			console.log('Error occurred in helpers.findAllIngredients function:', err);		
+		.then(function(recipe){
+			savedRecipe = recipe;
+			recipe.getIngredients()
+			.then(function(ingredients){
+				var hbsObject = {recipe: savedRecipe, ingredients: ingredients};
+				res.render('oneRecipe', hbsObject);
+			})
+			.catch(function(err) {
+				console.log('Error occurred in helpers.findSpecificRecipe function:', err);
+			})
 		})
-	},	
+	}
 
 }
-
-
-
-
-
-
-
 
 // We export the helpers function
 module.exports = helpers;
