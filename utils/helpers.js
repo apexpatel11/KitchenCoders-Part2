@@ -167,11 +167,11 @@ var helpers = {
 			spoonID: parseInt(req.body.spoonID)			
 		};
 
-		if (isNaN(parseInt(req.body.servings)))	{
+		if (!isNaN(parseInt(req.body.servings)))	{
 			newRecipe.servings = parseInt(req.body.servings)};
-		if (isNaN(parseInt(req.body.preparationMinutes))) {
+		if (!isNaN(parseInt(req.body.preparationMinutes))) {
 			newRecipe.preparationMinutes = parseInt(req.body.preparationMinutes)};
-		if (isNaN(parseInt(req.body.cookingMinutes))) {
+		if (!isNaN(parseInt(req.body.cookingMinutes))) {
 			newRecipe.cookingMinutes = parseInt(req.body.cookingMinutes)};
 
 		return Recipe.create(newRecipe)
