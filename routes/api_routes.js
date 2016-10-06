@@ -131,7 +131,7 @@ router.get('/addRecipe', function (req, res) {
 //
 router.post('/addRecipe', function (req, res) {
 	helpers.addRecipe(req, res);
-	res.render('addRecipe');
+//	res.render('addRecipe');
 });
 
 //******************************************************
