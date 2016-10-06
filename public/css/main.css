@@ -140,32 +140,37 @@ a:active {
     nav Start
 --*/
 #main-nav {
-  font-family: serif;
+  font-family: 'Montserrat';
   margin-bottom: 0;
   font-weight: bolder;
+  background: #0cb50c;
 }
 #main-nav.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);
+    background: #0cb50c;
 }
 .navbar-default {
     font-size: 25px;
     background-color: rgba(0, 128, 0, 1);
-    border-width: 1px;
-    border-radius: 4px;
+    background: #0cb50c;
+    /*border-width: 1px;
+    border-radius: 4px;*/
 }
 #main-nav.navbar-default .navbar-nav>li>a {
     color: rgba(255, 255, 255, 1);
-    background-color: rgba(0, 128, 0, 1);
+    background: #0cb50c;
 }
 #main-nav.navbar-default .navbar-nav>li>a:hover,
 #main-nav.navbar-default .navbar-nav>li>a:focus {
     color: rgba(0, 128, 0, 1);
+    background: #0cb50c;
     background-color: rgba(248, 248, 248, 1);
 }
 #main-nav.navbar-default .navbar-nav>.active>a,
 #main-nav.navbar-default .navbar-nav>.active>a:hover,
 #main-nav.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(0, 128, 0, 1);
+    background: #0cb50c;
     background-color: rgba(255, 255, 255, 1);
 }
 #main-nav.navbar-default .navbar-toggle {
@@ -571,7 +576,7 @@ a:active {
   padding: 70px 0px;
 }
 #footer .block h3 {
-  color: #2E2E2E;
+  color: balck;
   padding-bottom: 25px;
 }
 #footer .block h3 span {
@@ -606,14 +611,14 @@ a:active {
 #footer .block .blog ul li h4 a,
 #footer .block .info ul li h4 a,
 #footer .block .gallary ul li h4 a {
-  color: #FF4F02;
+  color: green;
   font-size: 20px;
   font-weight: 600;
 }
 #footer .block .blog ul li p,
 #footer .block .info ul li p,
 #footer .block .gallary ul li p {
-  color: #474747;
+  color: black;
   font-size: 14px;
 }
 #footer .block .social-media-link h3 {
@@ -650,13 +655,13 @@ a:active {
     footer-bottom Start
 --*/
 #footer-bottom {
-  background: #E9E9E9;
+  background: #0cb50c; 
   padding: 20px 0px;
 }
 #footer-bottom p {
   text-align: center;
   padding-top: 12px;
-  color: #454545;
+  color: white;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
