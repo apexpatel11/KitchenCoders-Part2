@@ -78,7 +78,7 @@ a:active {
   color: #ff530a;
   font-weight: 600;
 }
-.heading:before {
+/*.heading:before {
   content: "";
   position: absolute;
   left: 50%;
@@ -87,7 +87,7 @@ a:active {
   height: 1px;
   background: #C8C1B3;
   margin-left: -70px;
-}
+}*/
 /*--
     custom heading Start
 --*/

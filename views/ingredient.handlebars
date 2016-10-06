@@ -9,38 +9,42 @@ button {margin-left: 10px;
         border: none;
         background: none;}
 .categoryUL {display: none;}
-.inlineB {display: inline-block;
-          vertical-align: top;
-          width: 300px;}
-/*.ingredients {overflow: scroll; }*/
-.ingredients {height: 35em;
-              overflow:scroll;
-              border:7px solid;
-              padding:1%; }
-.allOutStyle {
-  background-color: grey;
-  font-weight: 200;
+.equalHW eq{
+  height: 32px;
 }
-.inPantryStyle {
-  background-color: green;
-  font-weight: bold;
+.ingredientContainer{
+  max-height: 380px;
+  overflow-y: auto;
+}            
+.ingredientContainer::-webkit-scrollbar{
+  display: none;
+} 
+.panel-heading{
+  font-size:20px;
+} 
+.panel-default{
+  height: 450px;
+  width: 430px;
+}
+.panel-heading{
+  background : : green;
 }
 
 </style>
 
 {{! ************* MAIN HEADING}}
 <div class="container">
-  <div class="row"
-    <div class="col-md-12">
-      <div class="block">
-      <h1 class="heading"><span> UPDATE YOUR PANTRY </span></h1>
+  <div class="paddingBlock">
+    <div class="equalHWrap eqWrap">
+      <h1 class="heading"><span>Pick Your Ingredients Here And Will Find Matching Recipes For You</span></h1>
 
         {{! ************* DIVISION FOR INGREDIENTS IN PANTRY}}
-        <div class="col-xs-12 col-md-7 ingredients">
-          <div class="container inlineB pantry">
+          <div class="col-md-6 ingredients">
+          <div class="equalHW eq">
             <div class="containerTitle">
-              <h2><strong>List of Ingredients</strong></h2>
-              </br>
+            <div class="panel panel-default">
+              <div class="panel-heading">List Of Ingredients:</div>
+              <div class="panel-body">
               <div class="ingredientContainer" id="pantryList">
                 {{! ***** ingredients go here}}
 
@@ -54,20 +58,24 @@ button {margin-left: 10px;
                 {{/each}}
 
               </div>
-            </div>
-          </div>
-        </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
         {{! ************* DIVISION FOR FORM TO ADD INGREDIENT}}
-        <div class="col-xs-12 col-md-5 ingredients">
-          <div class="block">
-            <div class="container inlineB addIngredient">
-              <div class="containerTitle">
+        <div class="col-md-6 ingredients">
+          <div class="equalHWrap eqWrap">
+            <div class="containerTitle">
+            <div class="panel panel-default">
+            <div class="panel-heading">Add Your Ingredients Here</div>
+            <div class="panel-body">
                 <form role="form" class="create-update-form" action="ingredient/update" method="POST">
                   <div class="form-group">
                     <!-- Here we create the text box for capturing the search term-->
                     <label for="search">
-                      <h2><strong>Add Your Ingredient Here: </strong></h2>
                     </label>
                     </br>
                     <input type="text" class="form-control" id="bu" name="name">
@@ -89,9 +97,12 @@ button {margin-left: 10px;
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div> 
+                  </div>        
 
 
       </div> {{!end of block div}}
