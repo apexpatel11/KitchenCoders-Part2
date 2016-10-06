@@ -91,9 +91,8 @@ router.post('/ingredient/update/:id', function(req, res) {
 // add addition limitation that all ingredients must be inStock
 //
 router.get('/findRecipe', function (req, res) {
-	helpers.findAllIngredients(req, res);
-
-	res.render('findRecipe');
+	var hblPage = 'findRecipe';
+	helpers.findAllIngredients(req, res, hblPage);
 });
 
 router.post('/findRecipe', function (req, res) {
