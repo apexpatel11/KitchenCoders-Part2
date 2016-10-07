@@ -711,12 +711,14 @@ video {
 .w3ls_banner_info {
     padding: 2em;
     text-align: center;
-    background: rgba(34, 34, 34, 0.58);
+/*    background: rgba(34, 34, 34, 0.58);
 /*    width: 59%; */
     margin: 14em auto;
 }
 .w3ls_banner_info h3{
-  font-size:3em;
+  font-size:5em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
   color:#fff;
   line-height: 1.5em;
   letter-spacing: 2px;
@@ -727,17 +729,17 @@ video {
   font-size:1.1em;
 }
 .best-w3 ,.dishes-w3ls,.about-w3ls,.services-agile,.order-w3,.gallery-w3l,.typo,.contact-w3l{
-    padding: 5em 0;
+  padding: 5em 0;
 }
 .best-grids,.special-grids ,.dishes-grids,.about-grids,.what-grids,.service-grids,.order-grids,.gallery-grids,.contact-grids{
-    margin-top: 4em;
+  margin-top: 4em;
 }
 /*--menu--*/
 .menu-grid h4{
-   font-size: 2em;
+  font-size: 2em;
   color:#F19E1F;
-    text-transform: capitalize;
-    padding:0.5em 0;
+  text-transform: capitalize;
+  padding:0.5em 0;
 }
 .menu-grid p {
     font-size: 1em;
