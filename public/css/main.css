@@ -717,8 +717,8 @@ video {
 }
 .w3ls_banner_info h3{
   font-size:5em;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: grey;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #555;
   color:#fff;
   line-height: 1.5em;
   letter-spacing: 2px;
@@ -823,8 +823,13 @@ video {
 }
 .special-w3 {
     padding: 5em 0;
-    background: #F5F6F7;
+/*   background: #E5E6E7; */
+   background-color: rgba(255, 255, 255, 0.4);
 }
+
+
+
+
 h3.tittle1 {
     font-size: 3.5em;
     text-align: center;
