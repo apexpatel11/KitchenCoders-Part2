@@ -82,7 +82,7 @@ button {margin-left: 10px;
                 {{#each categories}} 
                 <div>
                   <h4 class="categorySection">{{this.className}}<i class="fa fa-hand-o-down pull-right"></i></h4>
-                  <ul class = "categoryUL catID{{this.id}}">
+                  <ul class = "list-group categoryUL catID{{this.id}}">
 
                   </ul>
                 </div>
@@ -158,7 +158,7 @@ button {margin-left: 10px;
     var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
     var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
     
-    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}</button>');
+    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="list-group-item ingrButton ' + statusStyle + '" type="button">{{this.name}}</button>');
 
 
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
@@ -176,7 +176,7 @@ button {margin-left: 10px;
 
 
     $('#pantryList').on('click', '.ingrButton', function(){
-      var updateURL = "ingredient/update/" + $(this).attr('data-id');
+      var updateURL = "myPantry/update/" + $(this).attr('data-id');
       var ingButton = $(this);
       var value = $(this).attr('data-pantryStatus');
       $.post(updateURL,
