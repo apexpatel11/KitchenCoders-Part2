@@ -43,8 +43,8 @@ router.get('/home', function (req, res) {
 // GET REQUEST TO URI  - /INGREDIENT
 // find all ingredients
 // and pass to handlebars to process further
-router.get('/ingredient', function(req, res) {
-	var hblPage = 'ingredient';
+router.get('/myPantry', function(req, res) {
+	var hblPage = 'myPantry';
 	helpers.findAllIngredients(req, res, hblPage);
 	// res.render('ingredient', hbsObject); // this is done in helper routine
 });
@@ -56,17 +56,17 @@ router.get('/ingredient', function(req, res) {
 // router.post('/ingredient/update', function(req, res) {
 // 	helpers.createIngredient(req, res)
 // 	});
-router.post('/ingredient/update', function(req, res) {
+router.post('/myPantry/update', function(req, res) {
 	helpers.createIngredient(req, res)
 	.then (function(){
-		res.redirect('/ingredient');
+		res.redirect('/myPantry');
 	});
 });
 
 // PUT REQUEST TO URI  - /INGREDIENT/UPDATE/:id
 // user identifies an ingredient and a change to the inStock status
 // we update the database with that information
-router.post('/ingredient/update/:id', function(req, res) {
+router.post('/myPantry/update/:id', function(req, res) {
 	helpers.updateIngredientPantryStatus(req, res)
 	.then (function(){
 		console.log("you are here", req.body.inPantry);
