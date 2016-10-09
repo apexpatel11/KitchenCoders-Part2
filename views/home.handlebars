@@ -1,5 +1,5 @@
 
-<body>
+
   <script src="js/jquery.vide.min.js"></script>
   <div data-vide-bg="video/tr">
     <div class="banner">
@@ -21,16 +21,17 @@
     <!--menu-->
     <div class="special-w3">
       <div class="container">
-        <h3 class="tittle1">What would you like to do ?</h3>
         <br>
 
         <div class="special-grids">
           <div class="col-md-4 menu-grid">
             <div class="menu1">
               <img src="images/m2.jpg" class="img-responsive gray" alt="ingredients">
-              <div class="menu-icon hvr-sweep-to-top">
-                <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
-              </div>
+                <a href="/myPantry">
+                  <div class="menu-icon hvr-sweep-to-top">
+                  <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
+                </div>
+                </a>
             </div>
             <div class="menu-bottom">
               <h4>Update My Pantry</h4>
@@ -42,9 +43,11 @@
           <div class="col-md-4 menu-grid">
             <div class="menu1">
               <img src="images/m4.jpg" class="img-responsive gray" alt="Recipes">
-              <div class="menu-icon hvr-sweep-to-top">
-                <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
-              </div>
+                <a href="/findRecipe">
+                  <div class="menu-icon hvr-sweep-to-top">
+                   <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
+                 </div>
+                </a>
             </div>
             <div class="menu-bottom">
               <h4>Find A Recipe</h4>
@@ -56,14 +59,16 @@
           <div class="col-md-4 menu-grid">
             <div class="menu1">
               <img src="images/m5.jpg" class="img-responsive gray" alt="Add recipes">
-              <div class="menu-icon hvr-sweep-to-top">
-                <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
-              </div>
+               <a href="/addRecipe">
+                <div class="menu-icon hvr-sweep-to-top">
+                  <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
             <div class="menu-bottom">
-              <h4>Add A Recipe</h4>
-              <p>I have a keeper recipe!</p>
-              <a href="/addRecipe" class="button  hvr-sweep-to-bottom">Go to add Recipe</a>
+              <h4>Browse My Cookbook</h4>
+              <p>Manage my favorite recipes</p>
+              <a href="/addRecipe" class="button  hvr-sweep-to-bottom">Go to My Cookbook</a>
             </div>
           </div>
           
@@ -71,8 +76,109 @@
         </div>
       </div>
     </div>
-    <!--menu-->
+
   </div>
 
+{{!--    footer  start ============================= --}}
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="block wow fadeInLeft"  data-wow-delay="200ms">
+                        <h3>CONTACT <span>INFO</span></h3>
+                        <div class="info">
+                            <ul>
+                                <li>
+                                  <h4><i class="fa fa-phone"></i>Telephone</h4>
+                                  <p>512-000-0000</p>
+                                    
+                                </li>
+                                <li>
+                                  <h4><i class="fa fa-map-marker"></i>Address</h4>
+                                  <p>Northcross, 2525 W Anderson Ln #365, Austin, TX 78757</p>
+                                </li>
+                                <li>
+                                  <h4><i class="fa fa-envelope"></i>E mail</h4>
+                                  <p>kitchencoders@gmail.com</p>
+                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+                <div class="col-md-4">
+                    <div class="block wow fadeInLeft"  data-wow-delay="700ms">
+                        <h3> CONNECT <span> With Us!</span></h3>
+                        <div class="blog">
+                            <div class="form-group">
+                                <label for="form_name">Firstname *</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+
+                                <label for="form_phone">Phone</label>
+                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                <div class="help-block with-errors"></div>
+
+                                <label for="form_message">Message *</label>
+                                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                <div class="help-block with-errors"></div>
+                                
+                                <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                <p class="text-muted"><strong>*</strong> These fields are required<a href="http://bootstrapious.com" target="_blank"></a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+                <div class="col-md-4">
+                    <div class="block wow fadeInLeft"  data-wow-delay="1100ms">
+                        <div class="gallary">
+                            <h3>PHOTO <span>STREAM</span></h3>
+                            <ul>
+                                <li>
+                                    <a href="#"><img src="/images/photo/photo-1.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="/images/photo/photo-2.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="/images/photo/photo-3.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="/images/photo/photo-4.jpg" alt=""></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="social-media-link">
+                            <h3>Follow <span>US</span></h3>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-behance"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #footer close -->
 
 

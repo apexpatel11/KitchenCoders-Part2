@@ -6,6 +6,19 @@
 /*--
     Common Css
 --*/
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+
 body {
   /*font-family: myfont;*/
   font-size: 14px;
@@ -119,12 +132,17 @@ a:active {
 }
 /*============== Mixins style close ================*/
 /*--
-    header-img start Start
+    background for each page other than home page
 --*/
-#hero-area {
+.background-area {
   position: relative;
-}
-#hero-area:before {
+  background-color: #fff;
+  background: url(../images/blog/blog-img-6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+ }
+.background-area:before {
   content: "";
   position: absolute;
   left: 0;
@@ -132,10 +150,12 @@ a:active {
   bottom: 0;
   top: 0;
   width: 100%;
-  height: 100%;
-  background: url("images/overlay-pattern.png") #000000;
+  height: 0;
+  background: #ffffff;
   opacity: 0.3;
 }
+
+
 /*--
     nav Start
 --*/
@@ -186,6 +206,10 @@ a:active {
 #main-nav.navbar-default .navbar-toggle:hover .icon-bar,
 #main-nav.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #008000;
+}
+
+.navbar {
+  border: 0;
 }
 /*--
     slider Start
@@ -655,12 +679,14 @@ a:active {
     footer-bottom Start
 --*/
 #footer-bottom {
+  /*position: absolute;*/
+  /*bottom: 0;*/
   background: #0cb50c; 
-  padding: 20px 0px;
+  vertical-align: middle;
 }
 #footer-bottom p {
   text-align: center;
-  padding-top: 12px;
+  padding: 5px 0;
   color: white;
   font-size: 12px;
   font-weight: 600;
@@ -716,10 +742,8 @@ video {
     margin: 14em auto;
 }
 .w3ls_banner_info h3{
-  font-size:5em;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #555;
-  color:#fff;
+  font-size:6em;
+  color: #FFF;
   line-height: 1.5em;
   letter-spacing: 2px;
 }
@@ -831,9 +855,9 @@ video {
 
 
 h3.tittle1 {
-    font-size: 3.5em;
-    text-align: center;
-  color: #e44514;
+  font-size: 3.5em;
+  text-align: center;
+  color: #fff;
   letter-spacing: 2px;
 }
 a.button {
@@ -896,6 +920,68 @@ a.button {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
 }
+
+/* css for myPantry Page *******************/
+
+
+.panel-body a
+  {
+    word-break:break-all;
+   }
+.sameLine {display: inline-block;}
+button {margin-left: 10px;
+        outline: none;
+        border: none;
+        background: none;}
+.categoryUL {display: none;}
+.equalHW eq{
+  height: 32px;
+}
+.ingredientContainer{
+  max-height: 380px;
+  overflow-y: auto;
+}            
+.ingredientContainer::-webkit-scrollbar{
+  display: none;
+} 
+.panel-heading{
+  background-color: #0cb50c;
+  font-size:20px;
+} 
+.panel-default{
+  height: 450px;
+  width: 430px;
+}
+.panel-default>.panel-heading {
+  background-color: #0cb50c;
+  color: white;
+}
+
+
+
+.allOutStyle {
+  background-color: grey;
+  font-weight: 200;
+}
+.inPantryStyle {
+  background-color: green;
+  font-weight: bold;
+}
+
+.categorySection {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+
+
 
 /*--contact--*/
 /*--responsive--*/
