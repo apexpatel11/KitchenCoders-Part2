@@ -59,7 +59,8 @@
                     <li><a href="/findRecipe">Find Recipes</a></li>
                     <li><a href="/addRecipe">Add Recipe</a></li>
                     <li><a href="/admin">Gather More Recipes</a></li>
-                    <li><a href="/signOut">Sign Out</a></li>
+                    <!-- <li><a href="/signOut">Sign Out</a></li> -->
+                    <li><a href="/signOut" onclick="signOut();">Sign out</a></li>
                     <li><a href="/contactUs">Contact Us</a></li>
                 </ul>
             </div>
@@ -186,7 +187,14 @@
             </div>
         </div>
     </footer>
-
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 
 </body>
 </html>

@@ -717,14 +717,17 @@ video {
 }
 .w3ls_banner_info h3{
   font-size:5em;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #555;
-  color:#fff;
+
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 60px;
+  /*-webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #555;*/
+  color: #ffffff;
   line-height: 1.5em;
   letter-spacing: 2px;
 }
 .w3ls_banner_info p{
-  color:#fff;
+  color: #e44514;
   line-height:1.8em;
   font-size:1.1em;
 }
@@ -733,6 +736,22 @@ video {
 }
 .best-grids,.special-grids ,.dishes-grids,.about-grids,.what-grids,.service-grids,.order-grids,.gallery-grids,.contact-grids{
   margin-top: 4em;
+}
+/*google sign on button*/
+.abcRioButtonContentWrapper{
+ text-align: center;
+}
+.g-signin2{
+  position: absolute;
+
+  left: 45%;
+}
+@media screen and (orientation: portrait) {
+  .abcRioButtonContentWrapper { max-width: 90%; }
+}
+
+@media screen and (orientation: landscape) {
+  .abcRioButtonContentWrapper { max-height: 90%; }
 }
 /*--menu--*/
 .menu-grid h4{
