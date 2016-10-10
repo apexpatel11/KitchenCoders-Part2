@@ -10,6 +10,11 @@
         </video>
         <div class="w3ls_banner_info">
           <h3>Welcome To  Kitchen Recipes </h3>
+
+          <div class="g-signin2" data-onsuccess="onSignIn">
+            <a href="/signOut" onclick="signOut();">Sign out</a>  
+          </div>
+
         </div>
       </div>
     </div>
@@ -55,6 +60,7 @@
               <a href="/findRecipe" class="button  hvr-sweep-to-bottom">Go to Find Recipe</a>
             </div>
           </div>  
+
 
           <div class="col-md-4 menu-grid">
             <div class="menu1">
@@ -180,5 +186,26 @@
             </div><!-- .row close -->
         </div><!-- .containe close -->
     </section><!-- #footer close -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); 
+  {{!-- Do not send to your backend! Use an ID token instead. --}}
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}  
+ function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+</script>
+
+
+
 
 
