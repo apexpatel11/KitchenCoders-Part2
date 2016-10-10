@@ -159,7 +159,7 @@ router.post('/admin', function (req, res) {
 
 router.get('/signOut', function (req, res) {
 	req.logout();
-  res.redirect('/home');
+  res.redirect('home');
 });
 
 //******************************************************
@@ -172,7 +172,7 @@ router.get('/signOut', function (req, res) {
 // add addition limitation that all ingredients must be inStock
 //
 router.get('/contactUs', function (req, res) {
-	res.render('/home');
+	res.render('contactUs');
 });
 
 
