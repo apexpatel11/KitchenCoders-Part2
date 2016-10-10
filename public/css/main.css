@@ -746,8 +746,10 @@ video {
 
   left: 45%;
 }
-@media screen and (orientation: portrait) {
-  .abcRioButtonContentWrapper { max-width: 90%; }
+@media (max-width: 568px)
+.abcRioButtonContentWrapper {
+    width: 85%;
+    margin: 6em auto;
 }
 
 @media screen and (orientation: landscape) {
@@ -852,7 +854,7 @@ video {
 h3.tittle1 {
     font-size: 3.5em;
     text-align: center;
-  color: #e44514;
+  color: #ffffff;
   letter-spacing: 2px;
 }
 a.button {

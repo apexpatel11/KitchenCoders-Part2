@@ -1,4 +1,3 @@
-
 <style>
 .panel-body a
     {
@@ -51,7 +50,7 @@ button {margin-left: 10px;
       <div class="container col-md-12">
 
         <div class="containerTitle">
-          <h2 class="heading"><span>Add Your Recipe!</span></h2>
+          <h2 class="heading"><span>Add Your Recipe Here!</span></h2>
         </div> {{!-- .containerTitle --}}
         <div class="containerTitle">
           <h2 id="status" class="heading"><span></span></h2>
@@ -63,10 +62,19 @@ button {margin-left: 10px;
       <div class="container col-md-12"> {{!-- form --}}
         <form class="create-update-form" id="addRecipeForm" >
 
-
           <div class="container col-md-6">
+
             <label for="recipe">Recipe Name: </label>
             <input type="text" class="form-control" id="title">
+
+            <label for="ingredientName">Choose Ingredient</label>
+                    <input type="text" class="form-control" id="ingredientName">
+
+            <label for="ingredientAmount">Amount: </label>
+                    <input type="text" class="form-control" id="ingredientAmount">
+
+            <label for="ingredientUnit">Units: </label>
+                    <input type="text" class="form-control" id="ingredientUnit">        
 
             <label for="cuisine">Cuisine: </label>
               <select class="form-control" id="cuisine">
@@ -112,9 +120,7 @@ button {margin-left: 10px;
                 <option value="side+dish">Side Dish</option>
                 <option value="soup">Soup</option>
               </select>
-          </div>
 
-          <div class="container col-md-6">
             <label for="prepMins">Preparation Minutes: </label>
             <input type="text" class="form-control" id="prepMins">
 
@@ -123,55 +129,18 @@ button {margin-left: 10px;
 
             <label for="servings">Servings: </label>
             <input type="text" class="form-control" id="servings">
-          </div> {{!-- .container col-md-6 --}}
 
-          <div class="container col-md-12">
-            <label for="ingredient">Recipe Ingredients: </label>
-            <br>
-          </div>
+              <label for="preferences">Special Diet: </label>
+              <br>
+                <label class="checkbox-inline"><input type="checkbox" value="1" id="vegan">Vegan</label>
+                <label class="checkbox-inline"><input type="checkbox" value="1" id="vegetarian">Vegetarian</label>
+                <label class="checkbox-inline"><input type="checkbox" value="1" id="glutenFree">Gluten-Free</label>
 
-          <div class="container col-md-12 ingrBlock ">
-            <div class="container col-md-12">
-              <h3 class="text-center lead">Build Your Ingredients List Here</h3>
-            </div>
+          </div> {{!-- .container col-md-6 --}}      
+            
 
-            <div class="row">  
-              <div class="container col-md-8 ingrBlock">
-
-                <div class="row">
-                  <div class="container col-md-8 ingrBlock">
-                    <table class="table borderTable" id="ingrTable">
-                      <tr>
-                        <th>Ingredient</th>
-                        <th>Amount</th>
-                        <th>Unit</th>
-                      </tr>
-                    </table>
-                    <br>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="container col-md-4">
-
-                    <label for="ingredientName">Choose Ingredient</label>
-                    <input type="text" class="form-control" id="ingredientName">
-                  </div>{{!-- .col-md-4 --}}
-               
-                  <div class="container col-md-2">
-                    <label for="ingredientAmount">Amount: </label>
-                    <input type="text" class="form-control" id="ingredientAmount">
-                  </div>{{!-- .col-md-2 --}}
-
-                  <div class="container col-md-2">
-                    <label for="ingredientUnit">Units: </label>
-                    <input type="text" class="form-control" id="ingredientUnit">
-                  </div>{{!-- .col-md-2 --}}
-                </div>{{!-- .row --}}
-              </div>{{!-- .col-md-8 --}}
-              
-              <div class="container col-md-4" ingrBlock>
-                <label for="list">Ingredient List: </label>
+          <div class="container col-md-6">
+            <label for="ingredient">Recipe Ingredients List: </label>
 
                 <div class="container pantry">
                   <div class="containerTitle">
@@ -187,22 +156,16 @@ button {margin-left: 10px;
                       </div>
                     {{/each}}
                     </div>
+            <div class="container col-md-6">
+              <button type="button" class="btn btn-default form-control" id="addToList">Add Ingredient</button>
+            </div>
                   </div> {{!-- .containerTitle --}}
                 </div> {{!-- container pantry --}}
               </div> {{!-- .col-md-4 --}}
             </div> {{!-- .row --}}
-            <div class="container col-md-12">
-              <button type="button" class="btn btn-default form-control" id="addToList">Add Ingredient</button>
-            </div>
-          </div> {{!-- .col-md-12 ingrBlock --}}
+          </div> {{!-- .col-md-6 ingrBlock --}}
 
-          <div class="container col-md-12">
-
-              <label for="preferences">Special Diet: </label>
-              <br>
-                <label class="checkbox-inline"><input type="checkbox" value="1" id="vegan">Vegan</label>
-                <label class="checkbox-inline"><input type="checkbox" value="1" id="vegetarian">Vegetarian</label>
-                <label class="checkbox-inline"><input type="checkbox" value="1" id="glutenFree">Gluten-Free</label>
+          
 
               <br>
               <br>
