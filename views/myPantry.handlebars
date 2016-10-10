@@ -9,9 +9,8 @@ button {margin-left: 10px;
         border: none;
         background: none;}
 .categoryUL {display: none;}
-.equalHW eq{
-  height: 32px;
-}
+
+
 .ingredientContainer{
   max-height: 380px;
   overflow-y: auto;
@@ -33,13 +32,14 @@ button {margin-left: 10px;
 
 
 {{! THESE ARE THE CLASSES FOR THE INGREDIENTS IN THE DROP DOWN MENUS --}}
-{{! IF THE INGREDIENT IS IN STOCK, IT IS ASSIGNED THE inPantryStyle CLASS --}}
-{{! IF THE INGREDIENT IS NOT IN STOCK, IT IS ASSIGNED THE allOutStyle CLASS --}}
-{{! So when you click on an ingredient, the following things happen --}}
-{{!   1.  A request is made to the server to toggle the inPantry status of that ingredient --}}
-{{!   2.  The ingredient element on the page is assigned to the new class --}}
-{{!       (either inPantryStyle or allOutStyle --}}
-{{! This is where you can really change the look and actions of the ingredient element on the page  }}
+{{! IF THE INGREDIENT IS IN STOCK, IT IS ASSIGNED THE INPANTRYSTYLE CLASS --}}
+{{! IF THE INGREDIENT IS NOT IN STOCK, IT IS ASSIGNED THE ALLOUTSTYLE CLASS --}}
+{{! SO WHEN YOU CLICK ON AN INGREDIENT, THE FOLLOWING THINGS HAPPEN --}}
+{{!   1.  A REQUEST IS MADE TO THE SERVER TO TOGGLE THE INPANTRY STATUS OF THAT INGREDIENT --}}
+{{!   2.  THE INGREDIENT ELEMENT ON THE PAGE IS ASSIGNED TO THE NEW CLASS --}}
+{{!       (EITHER INPANTRYSTYLE OR ALLOUTSTYLE --}}
+{{! THIS IS WHERE YOU CAN REALLY CHANGE THE LOOK AND ACTIONS OF THE INGREDIENT ELEMENT ON THE PAGE  }}
+
 
 .allOutStyle {
   background-color: grey;
