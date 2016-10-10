@@ -4,45 +4,61 @@
 
 {{! ************* MAIN HEADING ********************************** --}}
 <div class="background-area content">
+  <div class="containerTitle blurBackground">
+    <h1 class="heading">What's in the pantry?</h1>
+  </div>
   <div class="container">
-    <div class="containerTitle">
-      <h1 class="heading">What's in my pantry?</h1>
-    </div>
-    {{! ************* DIVISION FOR INGREDIENTS IN PANTRY ************************** -}}
-    <div class="col-md-7">
-      <div class="equalHW eq">
-        <div class="containerTitle">
-          <div class="panel panel-default">
-            <div class="panel-heading">What You Have In Stock
-            </div>
-            <div class="panel-body">
-              <div class="ingredientContainer" id="pantryList">
-                {{! ***** ingredients go here}}
+    {{! ************* DIVISION FOR LIST OF CATEGORIES ************************** -}}
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Select A Category
+        </div>
+        <div class="panel-body">
+          <div class="ingredientContainer" id="catList">
 
-                {{#each categories}} 
-                  <div>
-                    <h4 class="categorySection">{{this.className}}<i class="fa fa-hand-o-down pull-right"></i></h4>
-                    <ul class = "list-group categoryUL catID{{this.id}}">
-
-                    </ul>
-                  </div>
-                {{/each}}
-
+            {{#each categories}} 
+              <div>
+                <h4 class="categorySection" id="catButton{{this.id}}" data-catID="{{this.id}}">{{this.className}}<i class="fa fa-hand-o-right pull-right"></i></h4>
               </div>
-            </div>
+            {{/each}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{! ************* DIVISION FOR INGREDIENTS IN SELECTED CATEGORY ************************** -}}
+    <div class="col-md-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">Check Ingredients
+        </div>
+
+        <div class="panel-body">
+          <div class="ingredientContainer" id="pantryList">
+
+            {{#each categories}} 
+              <div>
+                <ul class = "list-group categoryUL catID{{this.id}} hidden">
+                <h4>{{this.className}}</h4>
+                <hr>
+                {{! ***** ingredients go here}}
+                </ul>
+              </div>
+            {{/each}}
+
           </div>
         </div>
       </div>
     </div>
 
     {{! ************* DIVISION FOR FORM TO ADD INGREDIENT}}
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class="equalHWrap eqWrap">
         <div class="containerTitle">
           <div class="panel panel-default">
-            <div class="panel-heading">Add New Ingredients Here</div>
+            <div class="panel-heading">Add New Ingredient</div>
             <div class="panel-body">
-              <form role="form" class="create-update-form" action="ingredient/update" method="POST">
+              <form role="form" class="create-update-form" action="myPantry/update" method="POST">
                 <div class="form-group">
                   <!-- Here we create the text box for capturing the search term-->
                   <label for="search">
@@ -77,31 +93,46 @@
 
 
 
+
 {{!  ******************SCRIPT FILE HERE *****************}}
 <script>
   {{! *** CREATE THE HTML FOR EACH INGREDIENT ****}}
   {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}} 
   {{#each ingredients}}
 
-
     var ingredientLI = $('<li>');
-
     var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
+    var iconClass =({{this.inPantry}} ? "fa fa-check pull-right" : "fa fa-ban pull-right");
     var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
     
-    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="list-group-item ingrButton ' + statusStyle + '" type="button">{{this.name}}</button>');
+    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '"></i></button>');
 
-
-    $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
-      
+    $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);    
   {{/each}}
 
   $(document).ready(function() {
+  
+    var target = '.catID' + '{{categories.[0].id}}';
+    var catButton = '#catButton' + '{{categories.[0].id}}';
+
+    $('#pantryList').find(target).toggleClass('hidden');
+    $('#catList').find(catButton).toggleClass('chosenCat');
+
     $('.categorySection').on('click', function(event){
-      console.log("this was clicked");
       event.stopPropagation();
-      $(this).closest('div').find('.categoryUL').slideToggle();
-      })
+      console.log("clicked ", target);
+      $('#catList').find(catButton).toggleClass('chosenCat');
+      $('#pantryList').find(target).toggleClass('hidden');
+
+
+      var category = $(this).attr('data-catID');
+      target = '.catID' + category;
+      console.log("clicked ", target);
+      catButton = $(this);
+
+      $(this).toggleClass('chosenCat');
+      $('#pantryList').find(target).toggleClass('hidden');
+    })
 
 
     $('#pantryList').on('click', '.ingrButton', function(){
@@ -113,15 +144,23 @@
         function(result){
           if(result == "0"){
             ingButton.removeClass('inPantryStyle');
+            ingButton.find('i').removeClass('fa-check');
             ingButton.addClass('allOutStyle');
+            ingButton.find('i').addClass('fa-ban');
             ingButton.attr('data-pantryStatus', '1');
           } else {
             ingButton.removeClass('allOutStyle');
+            ingButton.find('i').removeClass('fa-ban');
             ingButton.addClass('inPantryStyle');
+            ingButton.find('i').addClass('fa-check');
             ingButton.attr('data-pantryStatus', '0');
           }
         })
     });
+
+
+
+
 
   });
 
