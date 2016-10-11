@@ -158,7 +158,10 @@ router.post('/admin', function (req, res) {
 });
 
 router.get('/signOut', function (req, res) {
+
+	// req.logout();
   res.redirect('home');
+
 });
 
 //******************************************************

@@ -6,6 +6,33 @@
 /*--
     Common Css
 --*/
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #FF0000;
+}
+
+.content {
+  flex: 1;
+}
+
+
 body {
   /*font-family: myfont;*/
   font-size: 14px;
@@ -68,10 +95,11 @@ a:active {
 --*/
 .heading {
   text-align: center;
-  font-weight: 500;
-  color: #2E2E2E;
+  font-weight: 600;
+  color: #ff530a;
   padding: 40px 0px;
   position: relative;
+  font-size: 45px;
 }
 .heading span {
   font-size: 45px;
@@ -119,12 +147,17 @@ a:active {
 }
 /*============== Mixins style close ================*/
 /*--
-    header-img start Start
+    background for each page other than home page
 --*/
-#hero-area {
+.background-area {
   position: relative;
-}
-#hero-area:before {
+  background-color: #fff;
+  background: url(../images/blog/blog-img-6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+ }
+.background-area:before {
   content: "";
   position: absolute;
   left: 0;
@@ -132,10 +165,16 @@ a:active {
   bottom: 0;
   top: 0;
   width: 100%;
-  height: 100%;
-  background: url("images/overlay-pattern.png") #000000;
-  opacity: 0.3;
+  height: 0;
+  background: #ffffff;
+  opacity: 0.8;
 }
+
+.blurBackground {
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 /*--
     nav Start
 --*/
@@ -186,6 +225,10 @@ a:active {
 #main-nav.navbar-default .navbar-toggle:hover .icon-bar,
 #main-nav.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #008000;
+}
+
+.navbar {
+  border: 0;
 }
 /*--
     slider Start
@@ -249,7 +292,7 @@ a:active {
 #blog {
   padding-top: 30px;
   padding-bottom: 100px;
-  background: url("images/blog/blog-bg.jpg");
+  /*background: url("images/blog/blog-bg.jpg");*/
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -655,12 +698,14 @@ a:active {
     footer-bottom Start
 --*/
 #footer-bottom {
-  background: #0cb50c; 
-  padding: 20px 0px;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  background: #0cb50c;
+  vertical-align: middle;
 }
 #footer-bottom p {
   text-align: center;
-  padding-top: 12px;
+  padding: 5px 0;
   color: white;
   font-size: 12px;
   font-weight: 600;
@@ -673,18 +718,18 @@ a:active {
   /*-- //CSS FOR HOME HANDLEBARS --*/
 
 
-video { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
- background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  /*background: url('../videos/tr.jpg') no-repeat; */
   background-size: cover;
   -webkit-transition: 1s opacity;
   transition: 1s opacity;
@@ -698,10 +743,10 @@ video {
 }
 .w3l_banner_logo{
   width: 100px;
-    height: 100px;
-    border: 1px solid #fff;
-    margin: 0 auto;
-    transform: rotate(45deg);
+  height: 100px;
+  border: 1px solid #fff;
+   margin: 0 auto;
+  transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -709,8 +754,8 @@ video {
   text-align: center;
 }
 .w3ls_banner_info {
-    padding: 2em;
-    text-align: center;
+  padding: 2em;
+  text-align: center;
 /*    background: rgba(34, 34, 34, 0.58);
 /*    width: 59%; */
     margin: 14em auto;
@@ -767,7 +812,7 @@ video {
     line-height: 1.8em;
 }
 .menu1{
-  position:relative 
+  position:relative
 }
 .menu-icon i {
     font-size: 1.5em;
@@ -852,9 +897,9 @@ video {
 
 
 h3.tittle1 {
-    font-size: 3.5em;
-    text-align: center;
-  color: #ffffff;
+  font-size: 3.5em;
+  text-align: center;
+  color: #fff;
   letter-spacing: 2px;
 }
 a.button {
@@ -918,20 +963,117 @@ a.button {
   transform: scaleY(1);
 }
 
+/* css for myPantry Page *******************/
+
+
+.panel-body a
+  {
+    word-break:break-all;
+   }
+.sameLine {display: inline-block;}
+button {margin-left: 10px;
+        outline: none;
+        border: none;
+        background: none;}
+.equalHW eq{
+  height: 32px;
+}
+.ingredientContainer{
+  /*overflow-y: auto;*/
+}
+.ingredientContainer::-webkit-scrollbar{
+  display: none;
+}
+.panel-heading{
+  background-color: #0cb50c;
+  font-size:20px;
+}
+.panel-default{
+  height: 650px;
+  /*width: 430px;*/
+  overflow-y: auto;
+}
+.panel-default>.panel-heading {
+  background-color: #0cb50c;
+  color: white;
+}
+
+/*.ingrButton:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.ingrButton:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}*/
+
+.ingrButton {
+  width:100%;
+  text-align: left;
+  color: #555;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+.ingrButton:hover {
+  box-shadow: 5px 5px 5px grey;
+  z-index: 1;
+}
+
+
+.allOutStyle {
+  background-color: #bbb;
+  font-weight: 200;
+}
+.inPantryStyle {
+  background-color: #0cb50c;
+  font-weight: bold;
+}
+
+
+.categorySection {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.categorySection:hover {
+  box-shadow: 5px 5px 5px grey;
+  z-index: 1;
+}
+
+.chosenCat {
+  background-color: #0cb50c;
+  color: white;
+}
+
+
+
 /*--contact--*/
 /*--responsive--*/
 @media(max-width:1440px){
-  
+
 }
 @media(max-width:1366px){
-  
+
 }
 @media(max-width:1280px){
-  
+
 }
 @media(max-width:1080px){
 .w3ls_banner_info h3 {
-    font-size: 2.8em; 
+    font-size: 2.8em;
 }
 .w3ls_banner_info p {
     font-size: 1em;
@@ -961,7 +1103,7 @@ h3.tittle1 {
     top: -12px
 }
 .contact-grid span {
-    font-size: 0.965em; 
+    font-size: 0.965em;
 }
 .google-map iframe {
     height: 400px;
@@ -969,7 +1111,7 @@ h3.tittle1 {
 }
 @media(max-width:991px){
 .indicat span {
-    font-size: 0.95em;  
+    font-size: 0.95em;
 }
 .detail ul li {
     font-size: 0.95em;
@@ -1115,10 +1257,10 @@ h3.tittle1 {
 }
 }
 @media(max-width:800px){
-  
+
 }
 @media(max-width:768px){
-  
+
 }
 @media(max-width:736px){
 .w3ls_banner_info {
@@ -1130,7 +1272,7 @@ h3.tittle1 {
 }
 .menu-icon {
     width: 70px;
-    height: 70px  
+    height: 70px
 }
 .indicat span {
     font-size: 0.9em;
@@ -1242,7 +1384,7 @@ h3.tittle1 {
 }
 .order-grid:nth-child(2) {
     margin-top: 2em;
-} 
+}
 }
 @media(max-width:640px){
 .w3ls_banner_info {
@@ -1265,7 +1407,7 @@ h3.tittle1 {
 .cuisine input[type="text"], .book_date input[type="text"], select#country, select#country1, .phone_email input[type="text"], .phone_email1 input[type="mail"] {
     font-size: 13px;
     padding: 8px 10px 10px 40px;
-} 
+}
 }
 @media(max-width:600px){
 .link-effect-3 a {
@@ -1278,7 +1420,7 @@ h3.tittle1 {
     width:70px;
     margin:3px;
     font-size:1.5em;
-    line-height:68px; 
+    line-height:68px;
 }
 .numscroller {
     font-size: 2em;
@@ -1287,7 +1429,6 @@ h3.tittle1 {
     width: 100%;
 }
 .service-grid {
-  text-align:center;
     width: 100%;
     padding: 0;
 }
@@ -1377,7 +1518,7 @@ a.button {
 .footer-grid:nth-child(2){
    margin-top: 2em;
 }
-} 
+}
 @media(max-width:480px){
 .best-grid p, .menu-grid p, .dishes-grid p, .about-grid p, .what-grid p, .team-gd p, .service-grid p, .contact-bottom p, .cont-info p {
     font-size: 0.9em;
@@ -1443,7 +1584,7 @@ h3.tittle1 {
     font-size: 1.7em;
 }
 .best-grid h5 {
-    font-size: 1.5em  
+    font-size: 1.5em
 }
 .best-grid h4, .menu-grid h4, .dishes-grid h4, .about-grid h4, .what-grid h4, .team-gd h4, .service-grid h4, .contact-grid h4, .contact-grid h4,.footer-grid h4 {
     font-size: 1.6em;
@@ -1466,7 +1607,7 @@ h3.tittle1 {
     top: -33px;
 }
 .contact-grid input[type="submit"] {
-   
+
  width: 48%;
 }
 .contact-left {
@@ -1550,7 +1691,7 @@ h3.tittle1 {
 }
 .port-7.effect-3 .gal-desc {
     top: -43px;
-} 
+}
 }
 @media(max-width:320px){
 .best-grid1,.best-left,.menu-grid,.dishes-grid1,.dishes-grid,.footer-grid,.about-grid,.what-grid,.team-gd,.service-grid1,.order-grid,.contact-grid,.contact-left,.contact-right {
@@ -1562,7 +1703,7 @@ h3.tittle1 {
 }
 .gallery-grids-left {
     padding: 0 0px;
-    width: 100%;  
+    width: 100%;
 }
 a.button2 {
     font-size: 1.1em;
