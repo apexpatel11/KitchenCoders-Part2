@@ -293,10 +293,10 @@ a:active {
   padding-top: 30px;
   padding-bottom: 100px;
   /*background: url("images/blog/blog-bg.jpg");*/
-  background-repeat: no-repeat;
+/*  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  position: relative;
+*/  position: relative;
 }
 /*#block .container {
     background: url(images/header.jpg) no-repeat center center fixed;
@@ -310,8 +310,8 @@ a:active {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #ffffff;
-  opacity: 0.3;
+/*  background: #ffffff;
+  opacity: 0.3;*/
 }
 #blog .block .heading {
   color: #fff;

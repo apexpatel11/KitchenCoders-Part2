@@ -1,18 +1,15 @@
 <style>
-h2 {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 30px;
-  color: green;
-}
-h4 {
-  margin-top: 10px;
-  margin-bottom: 0px;
-}
+
+
 button {
-margin: 10px;
-margin-top: 15px;
+margin-top: 25px;
 }
+
+#searchIngredient, .form-control {
+  width: 50%;
+  margin: 0 auto;
+}
+
 #recipeForm {
   text-align: center;
   margin-top: 5px;
@@ -28,30 +25,35 @@ label {margin-top: 15px}
   margin-left: auto;
   margin-right: auto;
   width: 250px;
-
   height: 250px;
 }
 
 </style>
+
+
+{{!-- ************* MAIN HEADING ********************************** --}}
 <div class="background-area content">
-<section id="form">
+  <div class="containerTitle blurBackground">
+    <h1 class="heading">Find a Recipe!</h1>
+  </div>
+  
+  {{!-- ************* DIVISION FOR FORM ************************** --}}
+  <div class="container">
 
-  <div class="row">
-    <div class="container col-md-12">
-      <div class="containerTitle">
-        <h1 class="heading"><span>Find a Recipe!</span></h1>
-      </div>
+    <form class="create-update-form" id="recipeForm" action="findRecipe" method="POST">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">Select A Category
+          </div>
+          <div class="panel-body">
 
-      <form class="create-update-form" id="recipeForm" action="findRecipe" method="POST">
-        <div>
-          <h4 id="question1"> Would you like anything particular in your meal?</h4><br>
-          <input type="text" id="searchIngredient" name="searchTerm"><br>
+            <h4 id="question1">SearchTerm</h4><br>
+            <input type="text" id="searchIngredient" name="searchTerm"><br>
 
             <label for="vegan">Vegan?</label><br>
             <input type="radio" name="vegan" value="1">Yes
             <input type="radio" name="vegan" value="0">No
             <input type="radio" name="vegan" value="x" selected>Don't Care<br>
-
 
             <label for="gluten">Gluten Free?</label><br>
             <input type="radio" name="gluten" value="1">Yes
@@ -112,25 +114,26 @@ label {margin-top: 15px}
               </select>
             </div>
 
-            <label for="canMake">Limit to Items You Have In Your Pantry?</label><br>
-            <input type="radio" name="canMake" value="1">Yes
-            <input type="radio" name="canMake" value="0">No<br>
+            <label for="canMake">Willing To Go To The Grocery Store?</label><br>
+            <input type="radio" name="canMake" value="1">No
+            <input type="radio" name="canMake" value="0">Yes<br>
 
-
-
-          <button type="submit" value="Submit" id="findRecipe">Submit</button>
+            <button type="submit" value="Submit" id="findRecipe">Submit</button>
+          </div> {{!-- .panel-body --}}
         </div>
-      </form>
-    </div>
-</section>
+      </div>
+    </form>
+  </div>
 
-{{!--blog start============================ --}}
-  <section id="blog">
-    <div class="container">
-      <div class="row">
+  <div class="containerTitle blurBackground">
+    <h1 class="heading">Search Results</h1>
+  </div>
+
+{{!-- blog start ============================ --}}
+
+    <div class="container" id="blog">
         <div class="col-md-12">
           <div class="block">
-            <h1 class="heading"><span>Search Results</span></h1>
 
             <ul>
               {{#each recipes}}
@@ -154,9 +157,7 @@ label {margin-top: 15px}
 
           </div>
         </div>{{!-- .col-md-12 close --}}
-      </div>{{!-- .row close --}}
     </div>{{!-- .containe close --}}
-  </section>{{!-- #blog close --}}
 
 </div>
 
