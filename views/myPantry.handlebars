@@ -1,7 +1,4 @@
 
-
-
-
 {{! ************* MAIN HEADING ********************************** --}}
 <div class="background-area content">
   <div class="containerTitle blurBackground">
@@ -16,7 +13,7 @@
         <div class="panel-body">
           <div class="ingredientContainer" id="catList">
 
-            {{#each categories}} 
+            {{#each categories}}
               <div>
                 <h4 class="categorySection" id="catButton{{this.id}}" data-catID="{{this.id}}">{{this.className}}<i class="fa fa-hand-o-right pull-right"></i></h4>
               </div>
@@ -36,7 +33,7 @@
         <div class="panel-body">
           <div class="ingredientContainer" id="pantryList">
 
-            {{#each categories}} 
+            {{#each categories}}
               <div>
                 <ul class = "list-group categoryUL catID{{this.id}} hidden">
                 <h4>{{this.className}}</h4>
@@ -87,7 +84,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
 </div> {{!end of block div}}
 
@@ -97,21 +94,21 @@
 {{!  ******************SCRIPT FILE HERE *****************}}
 <script>
   {{! *** CREATE THE HTML FOR EACH INGREDIENT ****}}
-  {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}} 
+  {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}}
   {{#each ingredients}}
 
     var ingredientLI = $('<li>');
     var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
     var iconClass =({{this.inPantry}} ? "fa fa-check pull-right" : "fa fa-ban pull-right");
     var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
-    
+
     ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '"></i></button>');
 
-    $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);    
+    $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
 
   $(document).ready(function() {
-  
+
     var target = '.catID' + '{{categories.[0].id}}';
     var catButton = '#catButton' + '{{categories.[0].id}}';
 
@@ -140,7 +137,7 @@
       var ingButton = $(this);
       var value = $(this).attr('data-pantryStatus');
       $.post(updateURL,
-        {inPantry: value}, 
+        {inPantry: value},
         function(result){
           if(result == "0"){
             ingButton.removeClass('inPantryStyle');

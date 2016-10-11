@@ -24,7 +24,7 @@
 		<link rel="stylesheet" href="/css/main.css">
         {{!-- Responsive Stylesheet --}
         <link rel="stylesheet" href="/css/responsive.css">
-<!--         <link rel="stylesheet" href="/css/home.css">       
+<!--         <link rel="stylesheet" href="/css/home.css">
  -->
         {{!-- Js --}}
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -56,8 +56,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/myPantry">My Pantry</a> </li>
-                    <li><a href="/addRecipe">My Cookbook</a></li>
-                    <li><a href="/findRecipe">Find Recipe</a></li>
+                    <li><a href="/findRecipe">Find Recipes</a></li>
+                    <li><a href="/addRecipe">Add Recipe</a></li>
+                    <li><a href="/admin">Gather More Recipes</a></li>
+                    <!-- <li><a href="/signOut">Sign Out</a></li> -->
+                    <li><a href="/signOut" onclick="signOut();">Sign out</a></li>
                     <li><a href="/contactUs">Contact Us</a></li>
                 </ul>
             </div>
@@ -65,7 +68,6 @@
     </div>
 
       {{{ body }}}
-
 
 
     <!--
@@ -82,7 +84,14 @@
             </div>
         </div>
     </footer>
-
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 
 </body>
 </html>

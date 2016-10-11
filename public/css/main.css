@@ -700,7 +700,7 @@ a:active {
 #footer-bottom {
   /*position: absolute;*/
   /*bottom: 0;*/
-  background: #0cb50c; 
+  background: #0cb50c;
   vertical-align: middle;
 }
 #footer-bottom p {
@@ -718,7 +718,7 @@ a:active {
   /*-- //CSS FOR HOME HANDLEBARS --*/
 
 
-video { 
+video {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -762,12 +762,17 @@ video {
 }
 .w3ls_banner_info h3{
   font-size:5em;
-  color: #FFF;
+
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 60px;
+  /*-webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #555;*/
+  color: #ffffff;
   line-height: 1.5em;
   letter-spacing: 2px;
 }
 .w3ls_banner_info p{
-  color:#fff;
+  color: #e44514;
   line-height:1.8em;
   font-size:1.1em;
 }
@@ -776,6 +781,24 @@ video {
 }
 .best-grids,.special-grids ,.dishes-grids,.about-grids,.what-grids,.service-grids,.order-grids,.gallery-grids,.contact-grids{
   margin-top: 4em;
+}
+/*google sign on button*/
+.abcRioButtonContentWrapper{
+ text-align: center;
+}
+.g-signin2{
+  position: absolute;
+
+  left: 45%;
+}
+@media (max-width: 568px)
+.abcRioButtonContentWrapper {
+    width: 85%;
+    margin: 6em auto;
+}
+
+@media screen and (orientation: landscape) {
+  .abcRioButtonContentWrapper { max-height: 90%; }
 }
 /*--menu--*/
 .menu-grid h4{
@@ -789,7 +812,7 @@ video {
     line-height: 1.8em;
 }
 .menu1{
-  position:relative 
+  position:relative
 }
 .menu-icon i {
     font-size: 1.5em;
@@ -957,14 +980,14 @@ button {margin-left: 10px;
 }
 .ingredientContainer{
   /*overflow-y: auto;*/
-}            
+}
 .ingredientContainer::-webkit-scrollbar{
   display: none;
-} 
+}
 .panel-heading{
   background-color: #0cb50c;
   font-size:20px;
-} 
+}
 .panel-default{
   height: 650px;
   /*width: 430px;*/
@@ -1040,17 +1063,17 @@ button {margin-left: 10px;
 /*--contact--*/
 /*--responsive--*/
 @media(max-width:1440px){
-  
+
 }
 @media(max-width:1366px){
-  
+
 }
 @media(max-width:1280px){
-  
+
 }
 @media(max-width:1080px){
 .w3ls_banner_info h3 {
-    font-size: 2.8em; 
+    font-size: 2.8em;
 }
 .w3ls_banner_info p {
     font-size: 1em;
@@ -1080,7 +1103,7 @@ h3.tittle1 {
     top: -12px
 }
 .contact-grid span {
-    font-size: 0.965em; 
+    font-size: 0.965em;
 }
 .google-map iframe {
     height: 400px;
@@ -1088,7 +1111,7 @@ h3.tittle1 {
 }
 @media(max-width:991px){
 .indicat span {
-    font-size: 0.95em;  
+    font-size: 0.95em;
 }
 .detail ul li {
     font-size: 0.95em;
@@ -1234,10 +1257,10 @@ h3.tittle1 {
 }
 }
 @media(max-width:800px){
-  
+
 }
 @media(max-width:768px){
-  
+
 }
 @media(max-width:736px){
 .w3ls_banner_info {
@@ -1249,7 +1272,7 @@ h3.tittle1 {
 }
 .menu-icon {
     width: 70px;
-    height: 70px  
+    height: 70px
 }
 .indicat span {
     font-size: 0.9em;
@@ -1361,7 +1384,7 @@ h3.tittle1 {
 }
 .order-grid:nth-child(2) {
     margin-top: 2em;
-} 
+}
 }
 @media(max-width:640px){
 .w3ls_banner_info {
@@ -1384,7 +1407,7 @@ h3.tittle1 {
 .cuisine input[type="text"], .book_date input[type="text"], select#country, select#country1, .phone_email input[type="text"], .phone_email1 input[type="mail"] {
     font-size: 13px;
     padding: 8px 10px 10px 40px;
-} 
+}
 }
 @media(max-width:600px){
 .link-effect-3 a {
@@ -1397,7 +1420,7 @@ h3.tittle1 {
     width:70px;
     margin:3px;
     font-size:1.5em;
-    line-height:68px; 
+    line-height:68px;
 }
 .numscroller {
     font-size: 2em;
@@ -1406,7 +1429,6 @@ h3.tittle1 {
     width: 100%;
 }
 .service-grid {
-  text-align:center;
     width: 100%;
     padding: 0;
 }
@@ -1496,7 +1518,7 @@ a.button {
 .footer-grid:nth-child(2){
    margin-top: 2em;
 }
-} 
+}
 @media(max-width:480px){
 .best-grid p, .menu-grid p, .dishes-grid p, .about-grid p, .what-grid p, .team-gd p, .service-grid p, .contact-bottom p, .cont-info p {
     font-size: 0.9em;
@@ -1562,7 +1584,7 @@ h3.tittle1 {
     font-size: 1.7em;
 }
 .best-grid h5 {
-    font-size: 1.5em  
+    font-size: 1.5em
 }
 .best-grid h4, .menu-grid h4, .dishes-grid h4, .about-grid h4, .what-grid h4, .team-gd h4, .service-grid h4, .contact-grid h4, .contact-grid h4,.footer-grid h4 {
     font-size: 1.6em;
@@ -1585,7 +1607,7 @@ h3.tittle1 {
     top: -33px;
 }
 .contact-grid input[type="submit"] {
-   
+
  width: 48%;
 }
 .contact-left {
@@ -1669,7 +1691,7 @@ h3.tittle1 {
 }
 .port-7.effect-3 .gal-desc {
     top: -43px;
-} 
+}
 }
 @media(max-width:320px){
 .best-grid1,.best-left,.menu-grid,.dishes-grid1,.dishes-grid,.footer-grid,.about-grid,.what-grid,.team-gd,.service-grid1,.order-grid,.contact-grid,.contact-left,.contact-right {
@@ -1681,7 +1703,7 @@ h3.tittle1 {
 }
 .gallery-grids-left {
     padding: 0 0px;
-    width: 100%;  
+    width: 100%;
 }
 a.button2 {
     font-size: 1.1em;
