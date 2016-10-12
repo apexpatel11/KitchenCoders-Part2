@@ -1,4 +1,3 @@
-
 var Recipe = require('../models')["Recipe"];
 var Ingredient = require('../models')["Ingredient"];
 var Category = require('../models')["Category"];

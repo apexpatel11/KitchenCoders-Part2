@@ -69,7 +69,7 @@ router.post('/myPantry/update', function(req, res) {
 router.post('/myPantry/update/:id', function(req, res) {
 	helpers.updateIngredientPantryStatus(req, res)
 	.then (function(){
-		console.log("myPantry update", req.body.inPantry);
+		console.log("you are here", req.body.inPantry);
 		res.json(req.body.inPantry);
 	});
 });
@@ -100,7 +100,6 @@ router.get('/groceryList/clear', function(req, res) {
 		res.send("list cleared");
 	});
 });
-
 
 // POST REQUEST TO URI - /INGREDIENT/OTHERUPDATE
 // user indentifies an ingredient and some change (other than inStock status)
@@ -173,7 +172,7 @@ router.post('/addRecipe', function (req, res) {
 //
 //
 router.get('/admin', function (req, res) {
-		var message = "What kind of recipes are you looking for?";
+		var message = "What are you hungry for?";
 		var hbsobject = {message};
 		res.render('admin', hbsobject);
 	});
