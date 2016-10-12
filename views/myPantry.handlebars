@@ -7,7 +7,7 @@
   </div>
   <div class="container">
     {{! ************* DIVISION FOR LIST OF CATEGORIES ************************** -}}
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">Select A Category
         </div>
@@ -26,7 +26,7 @@
     </div>
 
     {{! ************* DIVISION FOR INGREDIENTS IN SELECTED CATEGORY ************************** -}}
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">Check Ingredients
         </div>
@@ -49,9 +49,8 @@
       </div>
     </div>
 
-<<<<<<< HEAD
     {{! ************* DIVISION FOR GROCERY LIST}}
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="panel panel-default createGroceryList">
         <div class="panel-heading">Grocery List</div>
         <div class="panel-body">
@@ -77,9 +76,6 @@
     </div>
 
     {{!-- ************* DIVISION FOR FORM TO ADD INGREDIENT --}}
-=======
-    {{! ************* DIVISION FOR FORM TO ADD INGREDIENT}}
->>>>>>> b62912cec916fefdf9a8708aeb64e24c41a1ddaa
     <div class="col-md-3">
       <div class="equalHWrap eqWrap">
         <div class="containerTitle">
@@ -115,6 +111,9 @@
         </div>
       </div>
     </div>
+
+
+
   </div>
 
 </div> {{!-- end of block div --}}
@@ -122,84 +121,33 @@
 
 
 
-{{!  ******************SCRIPT FILE HERE *****************}}
+{{!--  ******************SCRIPT FILE HERE ***************** --}}
 <script>
-  {{! *** CREATE THE HTML FOR EACH INGREDIENT ****}}
-  {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}}
+  {{!-- *********** CREATE THE HTML FOR EACH INGREDIENT **** --}}
+  {{!-- ********* AND APPEND IT TO THE APPROPRIATE DIVISION ******* --}}
+
+  {{#each groceryListItems}}
+    console.log({{this.[0]}});
+  {{/each}}
+
   {{#each ingredients}}
 
     var ingredientLI = $('<li>');
-    var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
-    var iconClass =({{this.inPantry}} ? "fa fa-check pull-right" : "fa fa-ban pull-right");
-    var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
 
-    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '"></i></button>');
+    var pantryStatus = ({{this.inPantry}} ? "0" : "1");
+    var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
+    var iconClass =({{this.inPantry}} ? "fa fa-check pull-left" : "fa fa-ban pull-left");
+
+    ingredientLI.append('<button data-name="{{this.name}}" data-id="{{this.id}}" data-pantryStatus="' + pantryStatus + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '">&nbsp</i></button>')
+
+    ingredientLI.append('<button data-name="{{this.name}}" data-id="{{this.id}}" class="groceryListButton"><i class = "fa fa-list-ol"></i></button>');
 
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
 
-<<<<<<< HEAD
 
   var target = '.catID' + '{{categories.[0].id}}';
   var catButton = '#catButton' + '{{categories.[0].id}}';
 </script>
 
 <script src="../js/myPantry.js"></script>
-=======
-  $(document).ready(function() {
-
-    var target = '.catID' + '{{categories.[0].id}}';
-    var catButton = '#catButton' + '{{categories.[0].id}}';
-
-    $('#pantryList').find(target).toggleClass('hidden');
-    $('#catList').find(catButton).toggleClass('chosenCat');
-
-    $('.categorySection').on('click', function(event){
-      event.stopPropagation();
-      console.log("clicked ", target);
-      $('#catList').find(catButton).toggleClass('chosenCat');
-      $('#pantryList').find(target).toggleClass('hidden');
-
-
-      var category = $(this).attr('data-catID');
-      target = '.catID' + category;
-      console.log("clicked ", target);
-      catButton = $(this);
-
-      $(this).toggleClass('chosenCat');
-      $('#pantryList').find(target).toggleClass('hidden');
-    })
-
-
-    $('#pantryList').on('click', '.ingrButton', function(){
-      var updateURL = "myPantry/update/" + $(this).attr('data-id');
-      var ingButton = $(this);
-      var value = $(this).attr('data-pantryStatus');
-      $.post(updateURL,
-        {inPantry: value},
-        function(result){
-          if(result == "0"){
-            ingButton.removeClass('inPantryStyle');
-            ingButton.find('i').removeClass('fa-check');
-            ingButton.addClass('allOutStyle');
-            ingButton.find('i').addClass('fa-ban');
-            ingButton.attr('data-pantryStatus', '1');
-          } else {
-            ingButton.removeClass('allOutStyle');
-            ingButton.find('i').removeClass('fa-ban');
-            ingButton.addClass('inPantryStyle');
-            ingButton.find('i').addClass('fa-check');
-            ingButton.attr('data-pantryStatus', '0');
-          }
-        })
-    });
-
-
-
-
-
-  });
-
-
-</script>
->>>>>>> b62912cec916fefdf9a8708aeb64e24c41a1ddaa
