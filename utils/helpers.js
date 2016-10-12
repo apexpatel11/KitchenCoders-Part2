@@ -1,7 +1,7 @@
-
 var Recipe = require('../models')["Recipe"];
 var Ingredient = require('../models')["Ingredient"];
 var Category = require('../models')["Category"];
+var GroceryListItem = require('../models')["GroceryListItem"];
 
 
 var helpers = {
@@ -20,13 +20,18 @@ var helpers = {
 				order: ['className']
 			})
 			.then (function(categories){
-				var hbsObject = {
-					categories: categories,
-					ingredients: ingredients};
-				res.render(hblPage, hbsObject);
-			})
-			.catch(function(err) {
-				console.log('Error occurred in helpers.findAllIngredients function:', err);
+				GroceryListItem.findAll()
+				.then (function(groceryListItems){
+					var hbsObject = {
+						categories: categories,
+						ingredients: ingredients,
+						groceryListItems: groceryListItems};
+					console.log(groceryListItems);
+					res.render(hblPage, hbsObject);
+				})
+				.catch(function(err) {
+					console.log('Error occurred in helpers.findAllIngredients function:', err);
+				})
 			})
 		})
 	},
@@ -78,6 +83,7 @@ var helpers = {
 		})
 	},
 
+
 	addGroceryListItem: function(req, res) {
 		// return number of recipes you can now make
 		// ************** TO DO *************************************
@@ -119,9 +125,6 @@ var helpers = {
 
 
 
-
-
-	
 //=====================================================================
 //    HELPER FUNCTIONS FOR RECIPES
 //
