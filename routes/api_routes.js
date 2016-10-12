@@ -173,7 +173,7 @@ router.post('/addRecipe', function (req, res) {
 //
 //
 router.get('/admin', function (req, res) {
-		var message = "What kind of recipes are you looking for?";
+		var message = "What are you hungry for?";
 		var hbsobject = {message};
 		res.render('admin', hbsobject);
 	});

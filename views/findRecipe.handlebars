@@ -15,7 +15,9 @@ margin-top: 25px;
   margin-top: 5px;
 }
 
-label {margin-top: 15px}
+label {
+  margin-top: 15px
+  }
 
 .recipeTitle {
   color: red;
@@ -43,7 +45,7 @@ label {margin-top: 15px}
     <form class="create-update-form" id="recipeForm" action="findRecipe" method="POST">
       <div class="col-md-offset-2 col-md-8">
         <div class="panel panel-default">
-          <div class="panel-heading">Select A Category
+          <div class="panel-heading">&nbsp
           </div>
           <div class="panel-body">
 
@@ -130,36 +132,60 @@ label {margin-top: 15px}
   </div>
 
 {{!-- blog start ============================ --}}
-
-    <div class="container" id="blog">
+  <section id="blog">
+    <div class="container">
         <div class="col-md-12">
           <div class="block">
 
             <ul>
-              {{#each recipes}}
-                <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
-                  <a href="oneRecipe/{{this.id}}">
-                    <div class="blog-img">
-                     <img class="recipePic" src="{{this.image}}" alt="recipe-img">
-                    </div>
-                    <div class="content-right">
-                    <h3>{{this.title}}</h3>
-                    {{#if this.canMake}}
-                      <p>All ingredients in stock</p>
-                    {{else}}
-                      <p>Some ingredients not in stock</p>
-                    {{/if}}
-                    </div>
-                  </a>
-                </li>
-              {{/each}}
             </ul>
 
           </div>
         </div>{{!-- .col-md-12 close --}}
     </div>{{!-- .containe close --}}
 
+  </section>
 </div>
 
+<script>
+
+  var toggleOne = 'fadeInLeft';
+  var longMess = "";
+
+  {{#each recipes}}
+    var item = $('<li>');
+    {{#if this.canMake}}
+      message = '<p>All ingredients in stock</p>';
+        {{else}}
+      message = '<p>Some ingredients not in stock</p>';
+    {{/if}}
+
+    var index = {{@index}};
+    if ((index % 2) == 0) {
+      if (toggleOne == 'fadeInLeft') {
+        console.log("switching to right");
+        toggleOne = 'fadeInRight';}
+        else {
+        toggleOne = 'fadeInLeft';}
+      }
+
+    item.addClass('wow');
+    item.addClass(toggleOne);
+    item.addClass('data-wow-duration="300ms" data-wow-delay="300ms"');
+    
+    if (toggleOne == 'fadeInRight') {
+      longMess = '<a href="oneRecipe/{{this.id}}"><div class="content-left"><h3>{{this.title}}</h3>' + message + '</div><div class="blog-img"><img class="recipePic" src="{{this.image}}" alt="recipe-img"></div></a>';
+
+      } else {
+      longMess = '<a href="oneRecipe/{{this.id}}"><div class="blog-img"><img class="recipePic" src="{{this.image}}" alt="recipe-img"></div><div class="content-right"><h3>{{this.title}}</h3>' + message + '</div></a>';
+      };
+
+    item.append(longMess);
+    $('#blog').find('ul').append(item);
 
 
+  {{/each}}
+
+
+
+</script>
