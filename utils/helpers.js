@@ -77,6 +77,51 @@ var helpers = {
 			console.log('Error occurred in helpers.updateIngredientPantryStatus function:', err);
 		})
 	},
+
+	addGroceryListItem: function(req, res) {
+		// return number of recipes you can now make
+		// ************** TO DO *************************************
+		return GroceryListItem.create({
+			note: req.body.note, 
+			name: req.body.name
+			})
+		.then (function(groceryListItem){
+			Ingredient.find({where: {id: req.params.id}})
+				.then (function(ingredient){
+					groceryListItem.setIngredient(ingredient);
+				})
+			})
+		.catch(function(err) {
+			console.log('Error occurred in helpers.addGroceryListItem function:', err);
+		})
+	},
+
+	clearAllGroceryList: function(req, res) {
+		// return number of recipes you can now make
+		// ************** TO DO *************************************
+		return GroceryListItem.destroy({truncate: true})
+		.catch(function(err) {
+			console.log('Error occurred in helpers.clearIngredientGroceryList function:', err);
+		})
+	},
+
+	deleteGroceryListItem: function(req, res) {
+		// return number of recipes you can now make
+		// ************** TO DO *************************************
+		return GroceryListItem.findAll()
+		.then(function(groceryListItems){
+			GroceryListItem.destroy({truncate: true})
+		})
+		.catch(function(err) {
+			console.log('Error occurred in helpers.clearIngredientGroceryList function:', err);
+		})
+	},
+
+
+
+
+
+	
 //=====================================================================
 //    HELPER FUNCTIONS FOR RECIPES
 //
