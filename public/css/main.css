@@ -293,10 +293,10 @@ a:active {
   padding-top: 30px;
   padding-bottom: 100px;
   /*background: url("images/blog/blog-bg.jpg");*/
-  background-repeat: no-repeat;
+/*  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  position: relative;
+*/ position: relative;
 }
 /*#block .container {
     background: url(images/header.jpg) no-repeat center center fixed;
@@ -310,8 +310,8 @@ a:active {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #ffffff;
-  opacity: 0.3;
+/*  background: #ffffff;
+  opacity: 0.3;*/
 }
 #blog .block .heading {
   color: #fff;
@@ -321,7 +321,7 @@ a:active {
 }
 #blog .block ul li {
   overflow: hidden;
-  width: 50%;
+  width: 48.5%;
   float: left;
   background: #fff;
   text-align: center;
@@ -333,8 +333,8 @@ a:active {
 }
 #blog .block ul li h3 {
   color: #323232;
-  padding: 0px 40px 20px;
-  line-height: 26px;
+  padding: 0px 25px 15px;
+  line-height: 24px;
   position: relative;
 }
 #blog .block ul li h3:before {
@@ -970,29 +970,32 @@ a.button {
   {
     word-break:break-all;
    }
-.sameLine {display: inline-block;}
-button {margin-left: 10px;
+
+.panel-body {
+  max-height: 90%;
+  overflow-y: scroll;
+}
+/*.sameLine {display: inline-block;}*/
+/*button {margin-left: 10px;
         outline: none;
         border: none;
-        background: none;}
+        background: none;}*/
 .equalHW eq{
   height: 32px;
 }
-.ingredientContainer{
-  /*overflow-y: auto;*/
+/*.ingredientContainer{
+  height: inherit;
+  overflow-y: scroll;
 }
-.ingredientContainer::-webkit-scrollbar{
-  display: none;
-}
-.panel-heading{
+*/.panel-heading{
   background-color: #0cb50c;
   font-size:20px;
 }
 .panel-default{
   height: 650px;
-  /*width: 430px;*/
-  overflow-y: auto;
-}
+/*  overflow-y: hidden;
+*/  /*width: 430px;*/
+ }
 .panel-default>.panel-heading {
   background-color: #0cb50c;
   color: white;
@@ -1009,48 +1012,54 @@ button {margin-left: 10px;
   border-top-left-radius: 4px;
 }*/
 
-.ingrButton {
-  width:100%;
-  text-align: left;
-  color: #555;
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-
-
-.ingrButton:hover {
-  box-shadow: 5px 5px 5px grey;
-  z-index: 1;
-}
 
 
 .allOutStyle {
-  background-color: #bbb;
+  background-color: buttonface;
   font-weight: 200;
 }
 .inPantryStyle {
   background-color: #0cb50c;
-  font-weight: bold;
+  color: white;
+}
+.notOnList {
+  background-color: buttonface;
+}
+.onList {
+  background-color: #0cb50c;
+  color: white;
 }
 
-
-.categorySection {
+.categorySection, .ingrButton, .groceryListButton {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.43;
-  color: #555;
-  border: 1px solid #ccc;
+/*  color: #555;
+*/  border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
 
-.categorySection:hover {
+.categorySection:hover, .ingrButton:hover, .groceryListButton:hover {
   box-shadow: 5px 5px 5px grey;
   z-index: 1;
+}
+
+.ingrButton {
+  width:85%;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+}
+
+.groceryListButton {
+  width:10%;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-left: 5%;
+  padding: 3px 0;
 }
 
 .chosenCat {
@@ -1058,7 +1067,21 @@ button {margin-left: 10px;
   color: white;
 }
 
+.createGroceryList {
+  position: relative;
+}
 
+#printList{
+  position: absolute;
+  bottom: 10px;
+  left: 20%;
+}
+
+#clearList{
+  position: absolute;
+  bottom: 10px;
+  right: 20%;
+}
 
 /*--contact--*/
 /*--responsive--*/

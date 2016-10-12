@@ -74,6 +74,33 @@ router.post('/myPantry/update/:id', function(req, res) {
 	});
 });
 
+// PUT REQUEST TO URI  - /INGREDIENT/groceryList/:id
+// user identifies an ingredient and a change to the groceryList status
+// we update the database with that information
+router.post('/groceryList/add/:id', function(req, res) {
+	helpers.addGroceryListItem(req, res)
+	.then (function(result){
+		console.log("groceryList add", result);
+		res.json(req.body.note);
+	});
+});
+
+router.post('/groceryList/delete/:id', function(req, res) {
+	helpers.deleteGroceryListItem(req, res)
+	.then (function(){
+		console.log("groceryList delete", req.body.groceryList);
+		res.json(req.body.groceryList);
+	});
+});
+
+
+router.get('/groceryList/clear', function(req, res) {
+	helpers.clearAllGroceryList(req, res)
+	.then (function(){
+		res.send("list cleared");
+	});
+});
+
 // POST REQUEST TO URI - /INGREDIENT/OTHERUPDATE
 // user indentifies an ingredient and some change (other than inStock status)
 // ?? can this same routine delete the ingredient?  May need a separate
@@ -145,7 +172,7 @@ router.post('/addRecipe', function (req, res) {
 //
 //
 router.get('/admin', function (req, res) {
-		var message = "What kind of recipes are you looking for?";
+		var message = "What are you hungry for?";
 		var hbsobject = {message};
 		res.render('admin', hbsobject);
 	});
