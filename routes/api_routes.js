@@ -69,10 +69,38 @@ router.post('/myPantry/update', function(req, res) {
 router.post('/myPantry/update/:id', function(req, res) {
 	helpers.updateIngredientPantryStatus(req, res)
 	.then (function(){
-		console.log("you are here", req.body.inPantry);
+		console.log("myPantry update", req.body.inPantry);
 		res.json(req.body.inPantry);
 	});
 });
+
+// PUT REQUEST TO URI  - /INGREDIENT/groceryList/:id
+// user identifies an ingredient and a change to the groceryList status
+// we update the database with that information
+router.post('/groceryList/add/:id', function(req, res) {
+	helpers.addGroceryListItem(req, res)
+	.then (function(result){
+		console.log("groceryList add", result);
+		res.json(req.body.note);
+	});
+});
+
+router.post('/groceryList/delete/:id', function(req, res) {
+	helpers.deleteGroceryListItem(req, res)
+	.then (function(){
+		console.log("groceryList delete", req.body.groceryList);
+		res.json(req.body.groceryList);
+	});
+});
+
+
+router.get('/groceryList/clear', function(req, res) {
+	helpers.clearAllGroceryList(req, res)
+	.then (function(){
+		res.send("list cleared");
+	});
+});
+
 
 // POST REQUEST TO URI - /INGREDIENT/OTHERUPDATE
 // user indentifies an ingredient and some change (other than inStock status)
