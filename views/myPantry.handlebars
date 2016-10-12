@@ -1,5 +1,5 @@
 
-{{! ************* MAIN HEADING ********************************** --}}
+{{!-- ************* MAIN HEADING ********************************** --}}
 <div class="background-area content">
   <div class="containerTitle blurBackground">
     <h1 class="heading">What's in the pantry?</h1>
@@ -48,7 +48,37 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     {{! ************* DIVISION FOR FORM TO ADD INGREDIENT}}
+=======
+    {{! ************* DIVISION FOR GROCERY LIST}}
+    <div class="col-md-4">
+      <div class="panel panel-default createGroceryList">
+        <div class="panel-heading">Grocery List</div>
+        <div class="panel-body">
+          <div>
+            <div class="categoryContainer">
+              <ul id="groceryList">
+
+                {{#each groceryListItems}}
+                  <li>{{this.name}}  ---  {{this.note}}</li>
+
+                {{/each}}
+              </ul>
+            </div>
+                  </br>
+                  </br>
+                  </br>
+                  </hr>
+            <button type="button" class="btn btn-default" id="printList" ><i class="fa fa-print"></i> Print</button>
+            <button type="button" class="btn btn-default" id="clearList"><i class="fa fa-trash"></i> Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- ************* DIVISION FOR FORM TO ADD INGREDIENT --}}
+>>>>>>> feature9
     <div class="col-md-3">
       <div class="equalHWrap eqWrap">
         <div class="containerTitle">
@@ -86,7 +116,7 @@
     </div>
   </div>
 
-</div> {{!end of block div}}
+</div> {{!-- end of block div --}}
 
 
 
@@ -107,6 +137,7 @@
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
 
+<<<<<<< HEAD
   $(document).ready(function() {
 
     var target = '.catID' + '{{categories.[0].id}}';
@@ -163,3 +194,11 @@
 
 
 </script>
+=======
+
+  var target = '.catID' + '{{categories.[0].id}}';
+  var catButton = '#catButton' + '{{categories.[0].id}}';
+</script>
+
+<script src="../js/myPantry.js"></script>
+>>>>>>> feature9
