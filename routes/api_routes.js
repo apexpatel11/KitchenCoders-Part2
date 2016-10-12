@@ -74,6 +74,7 @@ router.post('/myPantry/update/:id', function(req, res) {
 	});
 });
 
+<<<<<<< HEAD
 // PUT REQUEST TO URI  - /INGREDIENT/groceryList/:id
 // user identifies an ingredient and a change to the groceryList status
 // we update the database with that information
@@ -101,6 +102,8 @@ router.get('/groceryList/clear', function(req, res) {
 	});
 });
 
+=======
+>>>>>>> b62912cec916fefdf9a8708aeb64e24c41a1ddaa
 // POST REQUEST TO URI - /INGREDIENT/OTHERUPDATE
 // user indentifies an ingredient and some change (other than inStock status)
 // ?? can this same routine delete the ingredient?  May need a separate
