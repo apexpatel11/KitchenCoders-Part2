@@ -5,20 +5,6 @@ button {
 margin-top: 25px;
 }
 
-#searchIngredient, .form-control {
-  width: 50%;
-  margin: 0 auto;
-}
-
-#recipeForm {
-  text-align: center;
-  margin-top: 5px;
-}
-
-label {
-  margin-top: 15px
-  }
-
 .recipeTitle {
   color: red;
 }
@@ -42,30 +28,39 @@ label {
   {{!-- ************* DIVISION FOR FORM ************************** --}}
   <div class="container">
 
-    <form class="create-update-form" id="recipeForm" action="findRecipe" method="POST">
+    <form class="create-update-form"  action="findRecipe" method="POST">
       <div class="col-md-offset-2 col-md-8">
         <div class="panel panel-default">
           <div class="panel-heading">&nbsp
           </div>
           <div class="panel-body">
 
-            <h4 id="question1">SearchTerm</h4><br>
-            <input type="text" id="searchIngredient" name="searchTerm"><br>
+            <div class="form-group">
+              <label for="searchTerm" id="question1">Search Term:</label>
+              <input class="form-control" type="text" id="searchIngredient" name="searchTerm">
+            </div>
 
-            <label for="vegan">Vegan?</label><br>
-            <input type="radio" name="vegan" value="1">Yes
-            <input type="radio" name="vegan" value="0">No
-            <input type="radio" name="vegan" value="x" selected>Don't Care<br>
+            <div class="form-group">
+              <label for="vegan">Vegan?</label><br>
+              <input type="radio" name="vegan" value="1">Yes
+              <input type="radio" name="vegan" value="0">No
+              <input type="radio" name="vegan" value="x" selected>Don't Care<br>
+            </div>
 
-            <label for="gluten">Gluten Free?</label><br>
-            <input type="radio" name="gluten" value="1">Yes
-            <input type="radio" name="gluten" value="0">No
-            <input type="radio" name="gluten" value="x" selected>Don't Care<br>
+            <div class="form-group">
+              <label for="gluten">Gluten Free?</label><br>
+              <input type="radio" name="gluten" value="1">Yes
+              <input type="radio" name="gluten" value="0">No
+              <input type="radio" name="gluten" value="x" selected>Don't Care<br>
+            </div>
 
-            <label for="vegetarian">Vegetarian?</label><br>
-            <input type="radio" name="vegetarian" value="1">Yes
-            <input type="radio" name="vegetarian" value="0">No
-            <input type="radio" name="vegetarian" value="x" selected>Don't Care<br>
+            <div class="form-group">
+
+              <label for="vegetarian">Vegetarian?</label><br>
+              <input type="radio" name="vegetarian" value="1">Yes
+              <input type="radio" name="vegetarian" value="0">No
+              <input type="radio" name="vegetarian" value="x" selected>Don't Care<br>
+            </div>
 
             <div class="form-group">
               <label for="cuisine">Type of Cuisine</label><br>
@@ -120,7 +115,7 @@ label {
             <input type="radio" name="canMake" value="1">No
             <input type="radio" name="canMake" value="0">Yes<br>
 
-            <button type="submit" value="Submit" id="findRecipe">Submit</button>
+            <button type="submit" value="Submit" id="findRecipe" class="btn btn-default">Submit</button>
           </div> {{!-- .panel-body --}}
         </div>
       </div>

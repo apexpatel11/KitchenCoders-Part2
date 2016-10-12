@@ -48,9 +48,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-    {{! ************* DIVISION FOR FORM TO ADD INGREDIENT}}
-=======
+
     {{! ************* DIVISION FOR GROCERY LIST}}
     <div class="col-md-4">
       <div class="panel panel-default createGroceryList">
@@ -78,7 +76,7 @@
     </div>
 
     {{!-- ************* DIVISION FOR FORM TO ADD INGREDIENT --}}
->>>>>>> feature9
+
     <div class="col-md-3">
       <div class="equalHWrap eqWrap">
         <div class="containerTitle">
@@ -137,68 +135,11 @@
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
 
-<<<<<<< HEAD
-  $(document).ready(function() {
 
-    var target = '.catID' + '{{categories.[0].id}}';
-    var catButton = '#catButton' + '{{categories.[0].id}}';
-
-    $('#pantryList').find(target).toggleClass('hidden');
-    $('#catList').find(catButton).toggleClass('chosenCat');
-
-    $('.categorySection').on('click', function(event){
-      event.stopPropagation();
-      console.log("clicked ", target);
-      $('#catList').find(catButton).toggleClass('chosenCat');
-      $('#pantryList').find(target).toggleClass('hidden');
-
-
-      var category = $(this).attr('data-catID');
-      target = '.catID' + category;
-      console.log("clicked ", target);
-      catButton = $(this);
-
-      $(this).toggleClass('chosenCat');
-      $('#pantryList').find(target).toggleClass('hidden');
-    })
-
-
-    $('#pantryList').on('click', '.ingrButton', function(){
-      var updateURL = "myPantry/update/" + $(this).attr('data-id');
-      var ingButton = $(this);
-      var value = $(this).attr('data-pantryStatus');
-      $.post(updateURL,
-        {inPantry: value},
-        function(result){
-          if(result == "0"){
-            ingButton.removeClass('inPantryStyle');
-            ingButton.find('i').removeClass('fa-check');
-            ingButton.addClass('allOutStyle');
-            ingButton.find('i').addClass('fa-ban');
-            ingButton.attr('data-pantryStatus', '1');
-          } else {
-            ingButton.removeClass('allOutStyle');
-            ingButton.find('i').removeClass('fa-ban');
-            ingButton.addClass('inPantryStyle');
-            ingButton.find('i').addClass('fa-check');
-            ingButton.attr('data-pantryStatus', '0');
-          }
-        })
-    });
-
-
-
-
-
-  });
-
-
-</script>
-=======
 
   var target = '.catID' + '{{categories.[0].id}}';
   var catButton = '#catButton' + '{{categories.[0].id}}';
 </script>
 
 <script src="../js/myPantry.js"></script>
->>>>>>> feature9
+
