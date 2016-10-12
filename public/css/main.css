@@ -66,8 +66,10 @@ p {
   /*font-family: myfont;*/
 }
 ul {
-  padding: 0;
-  margin: 0;
+ 
+  
+  padding: 2px;
+  margin: 2px;
   list-style: none;
 }
 a,
