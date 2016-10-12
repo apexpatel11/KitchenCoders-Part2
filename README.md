@@ -2,6 +2,8 @@
 KitchenRecipes: 
 Ever stare into your fridge or panty and come up empty with ideas of what to put together with what you got? 
 
+Would you like to take fewer trips to the grocery store?
+Would you like to have the option of finding recipes you can make with what you have on hand?
 Have you given up cooking due to lack of ingredients and had toast for dinner?
 
 Worry no more!

@@ -1,10 +1,8 @@
-
 <style>
 .blurBackground{
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 auto;
 }
-
 .sameLine {display: inline-block;}
 button {margin-left: 10px;
         outline: none;
@@ -51,7 +49,6 @@ button {margin-left: 10px;
   background-color: green;
   font-weight: bold;
 }
-
 .categorySection {
   height: 34px;
   padding: 6px 12px;
@@ -240,41 +237,28 @@ button {margin-left: 10px;
 <script>
  --> {{! *** CREATE THE HTML FOR EACH INGREDIENT ****}}
   {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}}
-
   {{#each ingredients}}
-
     var ingredientLI = $('<li>');
-
     var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
     var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
-
     ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" data-name="{{this.name}}" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}</button>');
-
-
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
-
-
-
 $(document).ready(function() {
-
   var recipeInfo = {};
   var ingredientInfo = [];
   var pendingIngredient = {};
-
   $('.categorySection').on('click', function(event){
     console.log("this was clicked");
     event.stopPropagation();
     $(this).closest('div').find('.categoryUL').slideToggle();
     });
-
     $('#pantryList').on('click', '.ingrButton', function(){
     event.stopPropagation();
     pendingIngredient.id = $(this).attr('data-id');
     pendingIngredient.name = $(this).attr('data-name');
     $('#ingredientName').val(pendingIngredient.name);
   });
-
   $('#addToList').on('click', function(){
     ingredientInfo.push({
       id: (pendingIngredient.id || ""),
@@ -282,17 +266,14 @@ $(document).ready(function() {
       amount: $('#ingredientAmount').val().trim(),
       unit: $('#ingredientUnit').val().trim()
       });
-
     pendingIngredient = {};
     var lastIndex = (ingredientInfo.length - 1);
     var ingrTable = $('#ingrTable');
     ingrTable.append('<tr><td>' + ingredientInfo[lastIndex].name + '</td><td>' + ingredientInfo[lastIndex].amount + '</td><td>' + ingredientInfo[lastIndex].unit + '</td></tr>');
-
     $('#ingredientName').val("");
     $('#ingredientAmount').val("");
     $('#ingredientUnit').val("");
   });
-
   $('#submitRecipe').on('click', function(){
     event.stopPropagation();
     console.log("ingredientInfo: ", ingredientInfo);
@@ -301,7 +282,6 @@ $(document).ready(function() {
     var prepMins = (isNaN($('#prepMins').val()) ? 0 : $('#prepMins').val().trim());
     var cookMins = (isNaN($('#cookMins').val()) ? 0 : $('#cookMins').val().trim());
     if ((recipeTitle) && (ingredientInfo.length > 0)) {
-
       var data = {
         title: recipeTitle,
         cuisine: $('#cuisine').val().trim(),
@@ -330,7 +310,4 @@ $(document).ready(function() {
     }
   });
 });
-
 </script>
-
-
