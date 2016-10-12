@@ -5,8 +5,6 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.STRING,
     spoonID: DataTypes.INTEGER,
     inPantry: {type: DataTypes.BOOLEAN,
-              defaultValue: false},
-    groceryList: {type: DataTypes.BOOLEAN,
               defaultValue: false}
   }, {
     classMethods: {

@@ -25,7 +25,7 @@
     </div>
 
     {{! ************* DIVISION FOR INGREDIENTS IN SELECTED CATEGORY ************************** -}}
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div class="panel panel-default">
         <div class="panel-heading">Check Ingredients
         </div>
@@ -43,32 +43,6 @@
               </div>
             {{/each}}
 
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {{! ************* DIVISION FOR GROCERY LIST}}
-    <div class="col-md-4">
-      <div class="panel panel-default createGroceryList">
-        <div class="panel-heading">Grocery List</div>
-        <div class="panel-body">
-          <div>
-            <div class="categoryContainer">
-              <ul id="groceryList">
-
-                {{#each groceryListItems}}
-                  <li>{{this.name}}  ---  {{this.note}}</li>
-
-                {{/each}}
-              </ul>
-            </div>
-                  </br>
-                  </br>
-                  </br>
-                  </hr>
-            <button type="button" class="btn btn-default" id="printList" ><i class="fa fa-print"></i> Print</button>
-            <button type="button" class="btn btn-default" id="clearList"><i class="fa fa-trash"></i> Clear</button>
           </div>
         </div>
       </div>
@@ -110,9 +84,6 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
 
 </div> {{!end of block div}}
@@ -120,32 +91,22 @@
 
 
 
-{{!--  ******************SCRIPT FILE HERE ***************** --}}
+{{!  ******************SCRIPT FILE HERE *****************}}
 <script>
-  {{!-- *********** CREATE THE HTML FOR EACH INGREDIENT **** --}}
-  {{!-- ********* AND APPEND IT TO THE APPROPRIATE DIVISION ******* --}}
-
-  {{#each groceryListItems}}
-    console.log({{this.[0]}});
-  {{/each}}
-
+  {{! *** CREATE THE HTML FOR EACH INGREDIENT ****}}
+  {{! ********* AND APPEND IT TO THE APPROPRIATE DIVISION *******}}
   {{#each ingredients}}
 
     var ingredientLI = $('<li>');
-
-    var pantryStatus = ({{this.inPantry}} ? "0" : "1");
     var statusStyle =({{this.inPantry}} ? "inPantryStyle" : "allOutStyle");
-    var iconClass =({{this.inPantry}} ? "fa fa-check pull-left" : "fa fa-ban pull-left");
+    var iconClass =({{this.inPantry}} ? "fa fa-check pull-right" : "fa fa-ban pull-right");
+    var changeStatusTo = ({{this.inPantry}} ? "0" : "1");
 
-    ingredientLI.append('<button data-name="{{this.name}}" data-id="{{this.id}}" data-pantryStatus="' + pantryStatus + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '">&nbsp</i></button>')
-
-    ingredientLI.append('<button data-name="{{this.name}}" data-id="{{this.id}}" class="groceryListButton"><i class = "fa fa-list-ol"></i></button>');
+    ingredientLI.append('<button data-id="{{this.id}}" data-pantryStatus="' + changeStatusTo + '" class="ingrButton ' + statusStyle + '" type="button">{{this.name}}<i class= "' + iconClass + '"></i></button>');
 
     $('#pantryList').find('.catID{{this.CategoryId}}').append(ingredientLI);
   {{/each}}
 
-  {{!-- ******************************* --}}
-  {{!-- *********** EVENT HANDLERS **** --}}
   $(document).ready(function() {
 
     var target = '.catID' + '{{categories.[0].id}}';
@@ -154,7 +115,6 @@
     $('#pantryList').find(target).toggleClass('hidden');
     $('#catList').find(catButton).toggleClass('chosenCat');
 
-  {{! *********** CLICK ON CATEGORY ****}}
     $('.categorySection').on('click', function(event){
       event.stopPropagation();
       console.log("clicked ", target);
@@ -171,11 +131,8 @@
       $('#pantryList').find(target).toggleClass('hidden');
     })
 
-  {{!-- *********** CLICK ON INGREDIENT BUTTON **** --}}
-  {{!-- ********* Change pantry status of ingredient *** --}}
 
     $('#pantryList').on('click', '.ingrButton', function(){
-      event.stopPropagation();
       var updateURL = "myPantry/update/" + $(this).attr('data-id');
       var ingButton = $(this);
       var value = $(this).attr('data-pantryStatus');
@@ -198,47 +155,9 @@
         })
     });
 
-  {{!-- *********** CLICK ON GROCERY LIST BUTTON **** --}}
-  {{!-- ********* Add ingredient to grocery list ***** --}}
-
-    $('#pantryList').on('click', '.groceryListButton', function(){
-      event.stopPropagation();
-      var ingrName =  $(this).attr('data-name');
-      var note = prompt("Enter quantity");
-      var updateURL = "groceryList/add/" + $(this).attr('data-id');
-      $.post(updateURL,
-        {note: note,
-         name: ingrName},
-        function(result){
-          console.log("you are here now");
-          $('#groceryList').append('<li>' + ingrName + '  ---  ' + note + '</li>');
-      })
-    });
 
 
-  {{!-- *********** CLICK ON DELETE BUTTON *********** --}}
-  {{!-- **** Delete ingredient from grocery list ***** --}}
 
-
-  {{!-- ************** CLICK ON CLEAR ALL BUTTON ********* --}}
-  {{!-- **** Clear all ingredients from grocery list ***** --}}
-
-    $('#clearList').on('click', function(){
-      event.stopPropagation();
-      $.get('groceryList/clear',
-      function(result){
-        console.log(result);
-        $('#groceryList').empty();
-      });
-    });
-
-  {{!-- *********** CLICK ON PRINT BUTTON **** --}}
-  {{!-- ************* Print grocery list ***** --}}
-
-    $('#printList').on('click', function(){
-      event.stopPropagation();
-
-    });
 
   });
 
